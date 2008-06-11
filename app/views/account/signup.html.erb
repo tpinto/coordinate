@@ -1,0 +1,9 @@
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+
+<p><label for="email">Email</label><br/>
+<%= f.text_field :email %></p>
+
+Nota: Será enviada um email com um link para activar a conta. Prometemos que é simples e rápido!
+<p><%= submit_tag 'Sign up' %></p>
+<% end -%>

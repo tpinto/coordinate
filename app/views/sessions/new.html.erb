@@ -1,0 +1,24 @@
+<% form_tag(session_url) do %>
+  <p>
+    <label for="name">Username:</label>
+    <%= text_field_tag "name" %>
+  </p>
+
+  <p>
+    <label for="password">Password:</label>
+    <%= password_field_tag %>
+  </p>
+
+  <p>
+    ...or use:
+  </p>
+
+  <p>
+    <label for="openid_url">OpenID:</label>
+    <%= text_field_tag "openid_url" %>
+  </p>
+
+  <p>
+    <%= submit_tag 'Sign in', :disable_with => "Signing in&hellip;" %>
+  </p>
+<% end %>
