@@ -38,7 +38,15 @@ class User < ActiveRecord::Base
   end
   
   def to_s
-    self.name.blank? ? self.email : self.name
+    if self.name.blank?
+      if self.email.blank?
+        self.identity_url
+      else
+        self.email
+      end
+    else
+      self.name
+    end
   end
   
   # Authenticates a user by their email and unencrypted password.  Returns the user or nil.

@@ -1,8 +1,7 @@
 class AccountController < ApplicationController
 
-  def details
+  def profile
     @user = self.current_user if logged_in?
-    @user ||= User.find_by_activation_code(params[:id])
     
     return unless request.post?
     
@@ -12,6 +11,7 @@ class AccountController < ApplicationController
     
     self.current_user = @user
     
+    flash[:message] = "Detalhes alterados :)"
     redirect_to root_path
   rescue ActiveRecord::RecordInvalid
     
@@ -27,7 +27,35 @@ class AccountController < ApplicationController
     
     render
   end
-  
+
+  def details
+    @user = self.current_user if logged_in?
+    @user ||= User.find_by_activation_code(params[:id])
+
+    return unless request.post?
+
+    @user.attributes = params[:user]
+    @user.save!
+
+    self.current_user = @user
+
+    flash[:message] = "Detalhes alterados :)"
+    redirect_to root_path
+  rescue ActiveRecord::RecordInvalid
+
+    flash.now[:name_errors] = @user.errors.on(:name)
+    flash.now[:email_errors] = @user.errors.on(:email)
+    if @user.errors.on(:password) == "doesn't match confirmation"
+      flash.now[:password_errors] = "não é igual à confirmação &darr;"
+      flash.now[:confirmation_errors] = "não é igual à password &uarr;"
+    else
+      flash.now[:password_errors] = @user.errors.on(:password)
+      flash.now[:confirmation_errors] = @user.errors.on(:password_confirmation)
+    end
+
+    render
+  end
+
   def resetpassword
     return unless request.post?
     

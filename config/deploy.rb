@@ -28,3 +28,10 @@ namespace :deploy do
 	  run("cd #{deploy_to}/current/ && mongrel_rails cluster::restart")
   end
 end
+
+desc "Copy database.yml"
+namespace :deploy do
+	task :copy_config, :roles => :app do
+		run("rm #{deploy_to}/current/config/database.yml && cp #{deploy_to}/shared/config/database.yml #{release_path}/config/")
+	end
+end

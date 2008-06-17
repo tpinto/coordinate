@@ -1,44 +1,26 @@
-<h1>Detalhes da conta</h1>
-
-<p>Estes detalhes são usados para criar um hCard, facilitando assim a troca de contactos entre os participantes.</p>
+<h1>Account details</h1>
 
 <% form_for :user do |f| -%>
-<p>
-	<label for="name">Name</label><br/>
-	<%= f.text_field :name %> <%= flash_message :name_errors, :error, :span %>
-</p>
 
-<p>
-	<label for="email">Email</label><br/>
-	<%= f.text_field :email %> <%= flash_message :email_errors, :error, :span %>
-</p>
-
-<hr>
-
-<p><label for="public">Profile Publico?</label><br/>
-<%= f.check_box :public %></p>
-
-Nota: No caso do profile ser público, serão publicados os próximos campos na lista de inscritos juntamente com um hCard para fácil exportação. Apenas para utilizadores autenticados: nós também odiamos SPAM.
-
-<p><label for="twitter_username">Twitter username</label><br/>
-<%= f.text_field :twitter_username %></p>
-
-<p><label for="personal_url">URL (blog, linked in ou outra coisa qualquer)</label><br/>
-<%= f.text_field :personal_url %></p>
-
-<p><label for="company">Company</label><br/>
-<%= f.text_field :company %></p>
-
-<p><label for="bio">Bio</label><br/>
-<%= f.text_area :bio %></p>
-
-<hr>
-
-<p><label for="password">Password</label><br/>
-<%= f.password_field :password %></p>
-
-<p><label for="password_confirmation">Confirm Password</label><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p><%= submit_tag 'Sign up' %></p>
+	<p>
+		<label for="name">Name</label><br/>
+		<%= f.text_field :name %> <%= flash_message :name_errors, :error, :span %>
+	</p>
+	
+	<p>
+		<label for="email">Email</label><br/>
+		<%= f.text_field :email %> <%= flash_message :email_errors, :error, :span %>
+	</p>
+	
+	<p>
+		<label for="password">Password</label><br/>
+		<%= f.password_field :password %> <%= flash_message :password_errors, :error, :span %>
+	</p>
+	
+	<p>
+		<label for="password_confirmation">Confirm Password</label><br/>
+		<%= f.password_field :password_confirmation %> <%= flash_message :confirmation_errors, :error, :span %>
+	</p>
+	
+	<p><%= submit_tag 'Submit &raquo;' %></p>
 <% end -%>
