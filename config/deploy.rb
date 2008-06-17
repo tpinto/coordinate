@@ -22,6 +22,8 @@ role :app, "#{domain}"
 role :web, "#{domain}"
 role :db,  "#{domain}", :primary => true
 
+after "deploy:update_code","deploy:copy_config"
+
 desc "Restart the mongrel cluster"
 namespace :deploy do
   task :restart, :roles => :app do
