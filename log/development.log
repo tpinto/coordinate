@@ -41176,3 +41176,58 @@ Rendered events/_talk (0.00231)
   [4;35;1mCACHE (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 12) [0m
 Rendered events/_talk (0.00054)
 Completed in 0.13115 (7 reqs/sec) | Rendering: 0.01436 (10%) | DB: 0.00236 (1%) | 200 OK [http://localhost/users/12]
+  [4;36;1mEvent Load (0.001832)[0m   [0;1mSELECT * FROM "events" LIMIT 1[0m
+  [4;36;1mEvent Load (0.001427)[0m   [0;1mSELECT * FROM "events" LIMIT 1[0m
+  [4;35;1mUser Load (0.003199)[0m   [0mSELECT * FROM "users" INNER JOIN "events_users" ON "users".id = "events_users".user_id WHERE ("events_users".event_id = 1 ) [0m
+  [4;36;1mSQL (0.000841)[0m   [0;1mDELETE FROM "events_users" WHERE event_id = 1 AND user_id IN (9,12,13,14,16,24,25,26,27)[0m
+  [4;35;1mEvent Destroy (0.000144)[0m   [0m DELETE FROM "events"
+ WHERE "id" = 1
+[0m
+  [4;36;1mSQL (0.001500)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000633)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000480)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000474)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000473)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000477)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000476)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000475)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000499)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.000523)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20080610225349)
+  [4;36;1mSQL (0.000507)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenIdAuthenticationTables (20080610230224)
+  [4;35;1mSQL (0.000485)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddOpenIdToUsers (20080611004644)
+  [4;36;1mSQL (0.000476)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to AddActivationCodeToUsers (20080611131338)
+  [4;35;1mSQL (0.000475)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTalks (20080611192229)
+  [4;36;1mSQL (0.000561)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateEvents (20080611192253)
+  [4;35;1mSQL (0.000484)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddAliasToEvents (20080611230656)
+  [4;36;1mSQL (0.000479)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to EventsUsersJoinTable (20080611231428)
+  [4;35;1mSQL (0.000478)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to AddMultipleFieldsToUser (20080613175544)
+  [4;36;1mSQL (0.000476)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to AddMainEvent (20080617162335)
+  [4;35;1mSQL (0.000476)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mEvent Create (0.000581)[0m   [0;1mINSERT INTO "events" ("name", "updated_at", "description", "alias", "created_at") VALUES('Barcamp Portugal 2008', '2008-06-17 16:25:50', 'A acontecer em Coimbra, a 6 e 7 de Setembro de 2008.', 'barcamppt08', '2008-06-17 16:25:50')[0m
+  [4;35;1mSQL (0.002547)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080617162335')[0m
+  [4;36;1mSQL (0.000357)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.001947)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.000715)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000220)[0m   [0mPRAGMA index_list("events")[0m
+  [4;36;1mSQL (0.000067)[0m   [0;1mPRAGMA index_list("events_users")[0m
+  [4;35;1mSQL (0.000064)[0m   [0mPRAGMA index_list("open_id_authentication_associations")[0m
+  [4;36;1mSQL (0.000068)[0m   [0;1mPRAGMA index_list("open_id_authentication_nonces")[0m
+  [4;35;1mSQL (0.000057)[0m   [0mPRAGMA index_list("talks")[0m
+  [4;36;1mSQL (0.000159)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;36;1mEvent Load (0.001409)[0m   [0;1mSELECT * FROM "events" LIMIT 1[0m
