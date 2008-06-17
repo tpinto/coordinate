@@ -1,0 +1,5 @@
+--- 
+port: 41040
+pid_file: log/mongrel.pid
+servers: 2
+environment: production
