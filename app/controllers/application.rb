@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   
   before_filter :login_from_cookie
+  before_filter :set_event_var # only because we're running only for one event: barcamp
+  after_filter :store_location
   
   helper :all # include all helpers, all the time
   
@@ -19,4 +21,10 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
+  
+  protected
+  
+  def set_event_var
+    @event = Event.find_by_alias "barcamppt08"
+  end
 end

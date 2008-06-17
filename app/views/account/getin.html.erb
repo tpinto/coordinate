@@ -1,0 +1,57 @@
+<div class="yui-g first">
+	<div class="yui-u first">
+		<h1><img src="/images/openid-logo.png"> (Login/Signup)</h1>
+		
+		<%= flash_message :open_id_errors, :error %>
+
+		<% form_tag(session_url) do %>
+		  <%= text_field_tag "openid_url" %> <%= submit_tag 'Login with OpenID &raquo;', :disable_with => "Signing in&hellip;" %>
+		<% end %>
+		
+		<p><strong>Nota:</strong> Com o OpenID não é necessário um "registo" explícito.<br>Este será efectuado aquando do primeiro login.</p>
+	</div>
+	<div class="yui-u">
+		<h1>Regular Login</h1>
+		
+		<%= flash_message :login_errors, :error %>
+
+		<% form_tag(session_url) do %>
+		  <p>
+		    <label for="name">Username:</label>
+		    <%= text_field_tag "name" %>
+		  </p>
+
+		  <p>
+		    <label for="password">Password:</label>
+		    <%= password_field_tag %>
+		  </p>
+
+		  <p>
+		    <%= submit_tag 'Sign in', :disable_with => "Signing in&hellip;" %>
+		  </p>
+		<% end %>
+	</div>
+</div>
+<div class="yui-g">
+	<div class="yui-u first">
+	</div>
+	
+	<div class="yui-u">
+		<h1>Regular Signup</h1>
+    
+		<%= flash_message :signup_errors, :error %>
+		<%= flash_message :signup_success, :success %>
+		
+		<% form_for :user, :url => getin_path do |f| -%>
+    
+		<p>
+			<label for="email">Email</label>
+			<%= f.text_field :email %>
+		</p>
+    
+		<p><%= submit_tag 'Sign up', :disable_with => "Signing up&hellip;" %></p>
+		<% end -%>
+		
+		<p><strong>Nota:</strong> Será enviado um email que servirá de confirmação,<br>o qual permitirá definir uma password.</p>
+	</div>
+</div>

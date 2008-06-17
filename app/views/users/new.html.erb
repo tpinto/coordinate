@@ -1,0 +1,58 @@
+<script type="text/javascript" charset="utf-8">
+	function validate_user (form,field) {
+		var f = form.serialize(true);
+		Object.extend(f,{toTest: field});
+		new Ajax.Request("/users/validate_user", {method: 'post', parameters: f});
+	}
+</script>
+
+<h1>Registo</h1>
+
+<div id="regular_signup" class="al form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
+	<a href="/signup/openid"><img src="/images/openid.gif" class="icon"></a> <a href="/signup/openid">Usar OpenID</a><br><br>
+
+<%= flash_message :signup_success, :success %>
+
+<% form_for :user, :url => "/users", :method => :post do |f| -%>
+<fieldset class="mb">
+	<p>
+		<label for="name">Nome:</label><br>
+		<%= f.text_field :name, :onblur => "validate_user(this.form,'name');" %> <%= flash_message :name_errors, :error, :span %>
+	</p>
+
+	<p>
+		<label for="email">Email:</label><br>
+		<%= f.text_field :email, :onblur => "validate_user(this.form,'email');" %> <%= flash_message :email_errors, :error, :span %>
+	</p>
+
+	<p>
+		<label for="password">Password:</label><br>
+		<%= f.password_field :password, :onblur => "validate_user(this.form,'password');" %> <%= flash_message :password_errors, :error, :span %>
+	</p>
+
+	<p>
+		<label for="password_confirmation">Password (confirmação):</label><br>
+		<%= f.password_field :password_confirmation %> <%= flash_message :confirmation_errors, :error, :span %>
+	</p>
+</fieldset>
+
+<p><%= submit_tag 'Submit &raquo;' %></p>
+<% end -%>
+</div>
+
+<div id="openid_signup" class="al form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
+	
+	<a href="/signup">Usar Email/Password</a><br><br>
+
+<% form_tag(session_url) do %>
+
+<fieldset class="mb">
+	<p>
+		<label for="openid_url">OpenID:</label><br>
+		<%= text_field_tag "openid_url" %> <%= flash_message :open_id_errors, :error, :span %>
+	</p>
+</fieldset>
+
+<p><%= submit_tag 'Sign in &raquo;', :disable_with => "Signing in&hellip;" %></p>
+<% end %>
+</div>

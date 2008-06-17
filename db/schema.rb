@@ -9,7 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080611131338) do
+ActiveRecord::Schema.define(:version => 20080613175544) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "alias"
+  end
+
+  create_table "events_users", :id => false, :force => true do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+  end
 
   create_table "open_id_authentication_associations", :force => true do |t|
     t.integer "issued"
@@ -26,6 +39,15 @@ ActiveRecord::Schema.define(:version => 20080611131338) do
     t.string  "salt",       :null => false
   end
 
+  create_table "talks", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -38,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20080611131338) do
     t.string   "identity_url"
     t.string   "activation_code"
     t.integer  "status",                                  :default => 0
+    t.boolean  "public"
+    t.string   "twitter_username"
+    t.string   "delicious_username"
+    t.string   "personal_url"
+    t.string   "company"
+    t.string   "bio"
   end
 
 end

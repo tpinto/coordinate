@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
   
   def create
+    failed_openid_login "Por favor, introduza um OpenID válido." and return if using_open_id_but_without_open_id?
+    
     if using_open_id?
       open_id_authentication(params[:openid_url])
     else
-      password_authentication(params[:name], params[:password])
+      password_authentication(params[:email], params[:password])
     end
   end
-  
+
   def new
   end
 
@@ -15,18 +17,18 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "YAY, logged out."
     redirect_back_or_default('/')
   end
 
   protected
 
-  def password_authentication(login, password)
-    self.current_user = User.authenticate(login, password)
+  def password_authentication(email, password)
+    self.current_user = User.authenticate(email, password)
     if logged_in?
       successful_login
     else
-      failed_login "Sorry, that username/password doesn't work"
+      failed_regular_login "Os dados de login estão errados. Para pedir uma nova password, <a href=\"/account/resetpassword\">clique aqui.</a>"
     end
   end
 
@@ -38,17 +40,18 @@ class SessionsController < ApplicationController
 
       case status.code
       when :missing
-        failed_login "Sorry, the OpenID server couldn't be found"
+        failed_openid_login "Este OpenID não foi encontrado."
       when :canceled
-        failed_login "OpenID verification was canceled"
+        failed_openid_login "A verificação foi cancelada."
       when :failed
-        failed_login "Sorry, the OpenID verification failed"
+        failed_openid_login "A verificação falhou."
       when :successful
           @user = User.find_or_create_by_identity_url(identity_url)
           
           if @user.new_record?
             @user.name = registration['fullname']
             @user.email = registration['email']
+            @user.status = 1
             @user.save(false)
           end
           self.current_user = @user
@@ -58,34 +61,24 @@ class SessionsController < ApplicationController
     end
   end
   
-  # registration is a hash containing the valid sreg keys given above
-  # use this to map them to fields of your user model
-  def assign_registration_attributes!(registration)
-    model_to_registration_mapping.each do |model_attribute, registration_attribute|
-      unless registration[registration_attribute].blank?
-        @current_user.send("#{model_attribute}=", registration[registration_attribute])
-      end
-    end
-  end
-
-  def model_to_registration_mapping
-    { :login => 'nickname', :email => 'email', :display_name => 'fullname' }
-  end
-
-
   private
   
-  def failed_login(message = "Authentication failed.")
-    flash.now[:error] = message
-    render :action => 'new'
+  def using_open_id_but_without_open_id?
+    params[:openid_url] and params[:openid_url].blank?
+  end
+  
+  def failed_openid_login(message = "Authentication failed.")
+    flash[:open_id_errors] = message
+    redirect_back_or_default('/')
+  end
+  
+  def failed_regular_login(message = "Authentication failed.")
+    flash[:login_errors] = message
+    redirect_back_or_default('/')
   end
 
   def successful_login
-    if params[:remember_me] == "1"
-      self.current_user.remember_me
-      cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
-    end
-    redirect_back_or_default('/')
-    flash[:notice] = "Logged in successfully"
+    flash[:notice] = "YAY! Logged in."
+    redirect_to '/'
   end
 end

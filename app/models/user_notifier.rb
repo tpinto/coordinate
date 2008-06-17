@@ -2,8 +2,14 @@ class UserNotifier < ActionMailer::Base
 
   def signup_with_email(user)
     setup_email(user)
-    @subject    <<  'Registo por email: activação'
-    @body[:url] =   "http://barcamp.webreakstuff.com/account/preferences/#{user.activation_code}"
+    @subject    <<  'Registo'
+    @body[:url] =   "http://barcamp.webreakstuff.com/account/details/#{user.activation_code}"
+  end
+  
+  def reset_password(user)
+    setup_email(user)
+    @subject    <<  'Nova password'
+    @body[:url] =   "http://barcamp.webreakstuff.com/account/details/#{user.activation_code}"    
   end
 
   protected

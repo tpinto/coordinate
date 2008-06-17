@@ -1,0 +1,83 @@
+body {
+  font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+}
+
+#hd {
+  text-align: center;
+}
+
+#bd {
+  margin-top: 50px;
+}
+
+#ft {
+  text-align: right;
+}
+//*
+//*fieldset#regular_login, fieldset#openid_login {
+//*  height: 7em; 
+//*}
+* 
+fieldset {
+  text-align: right;
+}
+*/
+form input[type="submit"] {
+  float: right;
+}
+
+input[type="text"], input[type="password"] {
+  border: 1px solid #000;
+  padding: 3px 2px 2px;
+  font-size: 1.1em;
+  width: 200px;
+}
+
+textarea {
+  border: 1px solid #000;
+  padding: 3px 2px 2px;
+  font-size: 1.1em;
+  width: 400px;
+  height: 100px;
+}
+
+
+a {
+  color: #008040;
+}
+
+.mb {
+  margin-bottom: 15px;
+}
+
+h1 img {
+  vertical-align: middle;
+}
+
+img.icon {
+  vertical-align: middle;
+}
+
+#openid_url {
+  background: url(/images/openid.gif) no-repeat #FFF 5px;
+  padding-left: 25px;
+}
+
+.error {
+  background: #FFADB0;
+  border: 1px solid #FF4845;
+  padding: 4px 3px 3px;
+}
+
+.success {
+  background: #CEFFCB;
+  border: 1px solid #008040;
+  padding: 4px 3px 3px;
+}
+
+/* utilities */
+.fr{float:right;}
+.ar{text-align:right;}
+.fl{float:left;}
+.al{text-align:left;}
+.ac{text-align:center;}

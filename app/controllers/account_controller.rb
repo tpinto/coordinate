@@ -1,22 +1,6 @@
 class AccountController < ApplicationController
 
-  def signup
-    @user = User.new(params[:user])
-    return unless request.post?
-    @user.save!
-    #self.current_user = @user
-    redirect_back_or_default(root_path)
-    flash[:notice] = "Verifique o seu email"
-  rescue ActiveRecord::RecordInvalid
-    render :action => 'signup'
-  end
-
-  # say something nice, you goof!  something sweet.
-  def index
-    redirect_to(:action => 'signup') unless logged_in? || User.count > 0
-  end
-  
-  def preferences
+  def details
     @user = self.current_user if logged_in?
     @user ||= User.find_by_activation_code(params[:id])
     
@@ -30,7 +14,31 @@ class AccountController < ApplicationController
     
     redirect_to root_path
   rescue ActiveRecord::RecordInvalid
+    
+    flash.now[:name_errors] = @user.errors.on(:name)
+    flash.now[:email_errors] = @user.errors.on(:email)
+    if @user.errors.on(:password) == "doesn't match confirmation"
+      flash.now[:password_errors] = "não é igual à confirmação &darr;"
+      flash.now[:confirmation_errors] = "não é igual à password &uarr;"
+    else
+      flash.now[:password_errors] = @user.errors.on(:password)
+      flash.now[:confirmation_errors] = @user.errors.on(:password_confirmation)
+    end
+    
     render
+  end
+  
+  def resetpassword
+    return unless request.post?
+    
+    user = User.find_by_email(params[:user][:email])
+    
+    if !user.nil?
+      user.reset_activation_code!
+      UserNotifier.deliver_reset_password(user)
+    else
+      flash.now[:email_errors] = "Não existe esse email registado."
+    end
   end
 
   def login
@@ -39,6 +47,6 @@ class AccountController < ApplicationController
   
   def logout
     redirect_to logout_path
-  end  
+  end
 
 end

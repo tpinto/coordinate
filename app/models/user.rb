@@ -1,25 +1,46 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
+  has_many :talks
+  has_and_belongs_to_many :events
+  
   # Virtual attribute for the unencrypted password
   attr_accessor :password
   attr_protected :status, :activation_code
 
+  validates_presence_of     :name
   validates_presence_of     :email
+  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
+  validates_format_of       :email, :with => /^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})$/, :allow_blank => true
+  
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
-  validates_length_of       :password, :within => 4..40, :if => :password_required?
-  validates_confirmation_of :password,                   :if => :password_required?
-  validates_length_of       :email,    :within => 3..100
-  validates_uniqueness_of   :email, :case_sensitive => false
-  validates_format_of       :email, :with => /^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})$/
+  #validates_length_of       :password, :within => 4..40, :if => :password_required?, :allow_blank => true
+  validates_confirmation_of :password,                   :if => :password_required?, :allow_blank => true
+
   
   before_save :encrypt_password
   
   def before_validation_on_create
     self.activation_code ||= self.class.activation_code(self.email)
-    self.status ||= 0
+    self.status = 1 # deprecated
   end
-
+  
+  def reset_activation_code!
+    self.update_attribute(:activation_code, self.class.activation_code(self.email))
+  end
+  
+  def used_open_id?
+    !self.identity_url.blank?
+  end
+  
+  def active?
+    true # deprecated
+  end
+  
+  def to_s
+    self.name.blank? ? self.email : self.name
+  end
+  
   # Authenticates a user by their email and unencrypted password.  Returns the user or nil.
   def self.authenticate(email, password)
     u = find_by_email(email) # need to get the salt
@@ -58,7 +79,7 @@ class User < ActiveRecord::Base
   end
   
   def self.activation_code(email)
-    Digest::SHA1.hexdigest("-#{Time.now.to_s}-#{email}-")[0,5]
+    Digest::SHA1.hexdigest("-#{Time.now.to_s}-#{email}-")[0,7]
   end
 
   protected
@@ -74,7 +95,7 @@ class User < ActiveRecord::Base
       # * it's not the first time we're signing up (so, if status is not 0)
       # * we're not logging in with openid (so, if identity_url is blank)
       # etc...
-      return false if status == 0 or !identity_url.blank?
+      return false if used_open_id?
       
       crypted_password.blank? || !password.blank?
     end

@@ -13,3 +13,12 @@ ActiveSupport.use_standard_json_time_format = true
 # Don't escape HTML entities in JSON, leave that for the #json_escape helper.
 # if you're including raw json in an HTML page.
 ActiveSupport.escape_html_entities_in_json = false
+
+# this won't add the "fieldWithErrors" div around fields with errors.
+ActionView::Base.field_error_proc = Proc.new { |html_tag, instance| "#{html_tag}" }
+
+# error messages:
+ActiveRecord::Errors.default_error_messages[:blank] = "é um campo obrigatório"
+ActiveRecord::Errors.default_error_messages[:invalid] = "não é válido"
+ActiveRecord::Errors.default_error_messages[:confirmation] = "não é igual à confirmação"
+ActiveRecord::Errors.default_error_messages[:taken] = "já foi usado para outro registo"

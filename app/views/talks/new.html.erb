@@ -1,0 +1,21 @@
+<h1>Adicionar Talk</h1>
+
+<div id="regular_login" class="al form">
+	<% form_for :talk, :url => {:action => :create} do |f| %>
+	<fieldset class="mb">
+		
+		<p>
+			<label for="title">Título</label><br>
+			<%= f.text_field :title %> <%= flash_message :title_errors, :error, :span %>
+		</p>
+
+		<p>
+			<label for="description">Descrição</label><br>
+			<%= f.text_field :description %> <%= flash_message :description_errors, :error, :span %>
+		</p>
+</fieldset>
+
+
+<p><%= submit_tag 'Submit &raquo;', :disable_with => "Submit &hellip;" %></p>
+<% end %>
+</div>

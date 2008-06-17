@@ -1,11 +1,21 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.openid_login "login/openid", :controller => "sessions", :action => "new", :openid => "true"
+  map.openid_signup "signup/openid", :controller => "users", :action => "new", :openid => "true"
+  
   map.login "login", :controller => "sessions", :action => "new"
+  map.signup "signup", :controller => "users", :action => "new"
+  
   map.logout "logout", :controller => "sessions", :action => "destroy"
-  map.signup "signup", :controller => "account", :action => "signup"
+  #map.getin "getin", :controller => "account", :action => "getin"
   
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
+  
   map.resource :session
+  
+  map.resources :talks
+  map.resources :events
+  map.resources :users
   
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -39,7 +49,7 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  map.root :controller => "account"
+  map.root :controller => "events"
 
   # See how all your routes lay out with "rake routes"
 

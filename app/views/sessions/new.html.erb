@@ -1,24 +1,41 @@
-<% form_tag(session_url) do %>
-  <p>
-    <label for="name">Username:</label>
-    <%= text_field_tag "name" %>
-  </p>
+<h1>Login</h1>
 
-  <p>
-    <label for="password">Password:</label>
-    <%= password_field_tag %>
-  </p>
+<div id="regular_login" class="al form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
+	<a href="/login/openid"><img src="/images/openid.gif" class="icon"></a> <a href="/login/openid">Usar OpenID</a><br><br>
+	
+	<%= flash_message :login_errors, :error %>
 
-  <p>
-    ...or use:
-  </p>
+	<% form_tag(session_url) do %>
+	<fieldset class="mb">
+		
+		<p>
+			<label for="email">Email:</label><br>
+			<%= text_field_tag "email" %>
+		</p>
 
-  <p>
-    <label for="openid_url">OpenID:</label>
-    <%= text_field_tag "openid_url" %>
-  </p>
+		<p>
+			<label for="password">Password:</label><br>
+			<%= password_field_tag %>
+		</p>
+</fieldset>
 
-  <p>
-    <%= submit_tag 'Sign in', :disable_with => "Signing in&hellip;" %>
-  </p>
+
+<p><%= submit_tag 'Sign in &raquo;', :disable_with => "Signing in&hellip;" %></p>
 <% end %>
+</div>
+
+<div id="openid_login" class="al form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
+	<a href="/login">Usar Email/Password</a><br><br>
+	
+<% form_tag(session_url) do %>
+
+<fieldset class="mb">
+	<p>
+		<label for="openid_url">OpenID:</label><br>
+		<%= text_field_tag "openid_url" %> <%= flash_message :open_id_errors, :error, :span %>
+	</p>
+</fieldset>
+
+<p><%= submit_tag 'Sign in &raquo;', :disable_with => "Signing in&hellip;" %></p>
+<% end %>
+</div>
