@@ -6,7 +6,6 @@ class AccountController < ApplicationController
     return unless request.post?
     
     @user.attributes = params[:user]
-    @user.status = 1
     @user.save!
     
     self.current_user = @user
@@ -14,17 +13,6 @@ class AccountController < ApplicationController
     flash[:message] = "Detalhes alterados :)"
     redirect_to root_path
   rescue ActiveRecord::RecordInvalid
-    
-    flash.now[:name_errors] = @user.errors.on(:name)
-    flash.now[:email_errors] = @user.errors.on(:email)
-    if @user.errors.on(:password) == "doesn't match confirmation"
-      flash.now[:password_errors] = "não é igual à confirmação &darr;"
-      flash.now[:confirmation_errors] = "não é igual à password &uarr;"
-    else
-      flash.now[:password_errors] = @user.errors.on(:password)
-      flash.now[:confirmation_errors] = @user.errors.on(:password_confirmation)
-    end
-    
     render
   end
 

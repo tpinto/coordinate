@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_protected :status, :activation_code
 
-  validates_presence_of     :name
-  validates_presence_of     :email
+  validates_presence_of     :name, :if => :email_and_name_required?
+  validates_presence_of     :email, :if => :email_and_name_required?
   validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
   validates_format_of       :email, :with => /^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})$/, :allow_blank => true
   
@@ -29,8 +29,21 @@ class User < ActiveRecord::Base
     self.update_attribute(:activation_code, self.class.activation_code(self.email))
   end
   
+  def email_and_name_required?
+    !used_open_id?
+  end
+  
   def used_open_id?
     !self.identity_url.blank?
+  end
+  
+  def public?
+    self.public_profile
+  end
+  
+  def has_info?
+    %w( twitter_username delicious_username personal_url company bio).each{ |i| return true if !self.send(i.to_sym).blank? }
+    return false
   end
   
   def active?
@@ -40,9 +53,9 @@ class User < ActiveRecord::Base
   def to_s
     if self.name.blank?
       if self.email.blank?
-        self.identity_url
+        self.identity_url + " (nome não definido)"
       else
-        self.email
+        self.email + " (nome não definido)"
       end
     else
       self.name

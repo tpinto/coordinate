@@ -1,1 +1,1 @@
-<li><%= link_to talk.title, talk_path(talk) %>, <%= talk.description %>, by <%= link_to talk.user, user_path(talk.user) %> <%= delete_link(talk) %></li>
+<li><%= link_to talk.title, talk_path(talk) %> de <%= link_to talk.user, user_path(talk.user) %> &mdash; <%= delete_link(talk) %></li>

@@ -42,16 +42,20 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     what = params[:toTest].to_sym
     if @user.valid?
-      render :nothing => true
+      render :update do |page|
+        page.hide "#{what}_errors"
+      end
     else
       render :update do |page|
         if @user.errors.on(what).nil?
+          puts "nao ha erros"
           page.hide "#{what}_errors"
-        elsif !@user.errors.on(what).nil?
+        elsif @user.errors.on(what)
+          puts "erros!"
           page.replace_html "#{what}_errors", @user.errors.on(what)
           page.show "#{what}_errors"
         end
-
+        puts @user.errors.inspect
       end
     end
   end

@@ -1,14 +1,12 @@
-<div class="yui-g">
-	<div class="yui-u">
-		<h2>Talks propostas</h2>
-		<ul>
-			<%= render :partial => "talk", :collection => @talks %>
-		</ul>
-	</div>
 	<div class="yui-u first">
-		<h2>Users inscritos</h2>
+		<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
 		<ul>
 			<%= render :partial => "user", :collection => @users %>
 		</ul>
 	</div>
-</div>
+	<div class="yui-u">
+		<h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
+		<ul>
+			<%= render :partial => "talk", :collection => @talks %>
+		</ul>
+	</div>

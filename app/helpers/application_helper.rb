@@ -3,15 +3,15 @@ module ApplicationHelper
   
   def login_logout
     if logged_in?
-      link_to("Adicionar talk", new_talk_url) +
-      " | " + 
+      link_to("Adicionar sessão", new_talk_url) +
+      #{}" | " + 
       link_to("Profile", :controller => "account", :action => "profile") + 
-      " | " +
+      #{}" | " +
       link_to("Details", :controller => "account", :action => "details") + 
-      " | " +
+      #{}" | " +
       link_to("Logout", logout_path)
     else
-      link_to("Login", login_path) + " / " + link_to("Signup", signup_path)
+      link_to("Login", login_path) + link_to("Signup", signup_path)
     end
   end
   
@@ -21,7 +21,7 @@ module ApplicationHelper
   end
   
   def menu
-    greetings + "<a href=\"/\">Home</a> | " + login_logout
+    "<div id=\"menu\">" + greetings + "<a href=\"/\">Home</a>" + login_logout + "</div>"
   end
   
   def flash_message(message_key, css_class, css_element = :div, show_anyway = true)

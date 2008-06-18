@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080617162335) do
+ActiveRecord::Schema.define(:version => 20080617213114) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -60,12 +60,12 @@ ActiveRecord::Schema.define(:version => 20080617162335) do
     t.string   "identity_url"
     t.string   "activation_code"
     t.integer  "status",                                  :default => 0
-    t.boolean  "public"
     t.string   "twitter_username"
     t.string   "delicious_username"
     t.string   "personal_url"
     t.string   "company"
     t.string   "bio"
+    t.boolean  "public_profile"
   end
 
 end

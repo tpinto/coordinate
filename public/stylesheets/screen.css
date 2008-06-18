@@ -1,5 +1,18 @@
+html {
+  background: #344B6F;
+}
+
 body {
   font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+}
+
+#doc2 {
+  border-width: 0px 4px 4px;
+  border-style: solid;
+  border-color: #7787A2;
+  margin: 0px auto;
+  padding: 10px 30px;
+  background: #fff url(/images/grad.gif) repeat-x;
 }
 
 #hd {
@@ -10,10 +23,35 @@ body {
   margin-top: 50px;
 }
 
+#sb {
+  border-left: 1px dotted #B8D2FF;
+  padding-left: 20px;
+}
+
 #ft {
+  border-top: 1px solid #7787A2;
+  padding-top: 8px;
+  margin-top: 15px;
   text-align: right;
 }
-//*
+
+#intro {
+  padding-right: 15px;
+}
+
+#menu a {
+  background: #344B6F;
+  padding: 3px 5px;
+  color: #fff;
+  text-decoration: none;
+  margin: 0px 3px;
+}
+
+#menu a:hover {
+  text-decoration: underline;
+}
+
+/*
 //*fieldset#regular_login, fieldset#openid_login {
 //*  height: 7em; 
 //*}
@@ -33,6 +71,10 @@ input[type="text"], input[type="password"] {
   width: 200px;
 }
 
+input.wide {
+  width: 400px;
+}
+
 textarea {
   border: 1px solid #000;
   padding: 3px 2px 2px;
@@ -43,15 +85,21 @@ textarea {
 
 
 a {
-  color: #008040;
+  /*color: #008040;*/
+  color: #934B31;
+}
+
+a:hover {
+  /*color: #008040;*/
+  color: #973836;
 }
 
 .mb {
   margin-bottom: 15px;
 }
 
-h1 img {
-  vertical-align: middle;
+h1 img.icon {
+  margin-right: 10px;
 }
 
 img.icon {

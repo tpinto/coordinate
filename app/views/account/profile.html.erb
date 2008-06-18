@@ -5,12 +5,15 @@
 <% form_for :user do |f| -%>
 
 <p><label for="public">Profile Publico?</label><br/>
-<%= f.check_box :public %></p>
+<%= f.check_box :public_profile %></p>
 
 Nota: No caso do profile ser público, serão publicados os próximos campos na lista de inscritos juntamente com um hCard para fácil exportação. Apenas para utilizadores autenticados: nós também odiamos SPAM.
 
 <p><label for="twitter_username">Twitter username</label><br/>
 <%= f.text_field :twitter_username %></p>
+
+<p><label for="delicious_username">Delicious username</label><br/>
+<%= f.text_field :delicious_username %></p>
 
 <p><label for="personal_url">URL (blog, linked in ou outra coisa qualquer)</label><br/>
 <%= f.text_field :personal_url %></p>
@@ -21,5 +24,5 @@ Nota: No caso do profile ser público, serão publicados os próximos campos na 
 <p><label for="bio">Bio</label><br/>
 <%= f.text_area :bio %></p>
 
-<p><%= submit_tag 'Sign up' %></p>
+<p><%= submit_tag 'Submit &raquo;' %></p>
 <% end -%>

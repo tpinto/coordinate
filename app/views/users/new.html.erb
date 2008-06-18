@@ -32,7 +32,7 @@
 
 	<p>
 		<label for="password_confirmation">Password (confirmação):</label><br>
-		<%= f.password_field :password_confirmation %> <%= flash_message :confirmation_errors, :error, :span %>
+		<%= f.password_field :password_confirmation, :onblur => "validate_user(this.form,'password');" %> <%= flash_message :confirmation_errors, :error, :span %>
 	</p>
 </fieldset>
 

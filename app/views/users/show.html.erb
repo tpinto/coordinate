@@ -1,7 +1,16 @@
-<h1><%= @user.name %></h1>
+<h1><%= @user %></h1>
+
+<% if @user.public? and @user.has_info? %>
+<h3>Detalhes</h3>
+	<%= twitter_profile(@user) %><br>
+	<%= delicious_profile(@user) %><br>
+	<%= personal_url(@user) %><br>
+	<%= company(@user) %><br>
+	<%= bio(@user) %><br>
+<% end %>
 
 
-<h3>Talks desta pessoa:</h3>
+<h3>Sessões desta pessoa:</h3>
 <li>
 	<%= render :partial => "events/talk", :collection => @user.talks %>
 </li>

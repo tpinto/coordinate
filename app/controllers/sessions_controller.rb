@@ -54,6 +54,12 @@ class SessionsController < ApplicationController
             @user.status = 1
             @user.save(false)
           end
+          
+          if @user.name.blank? or @user.email.blank?
+            flash[:message] = "Preencha, por favor, o nome e email para mostrar na lista de inscritos e receber notificações (poucas)."
+            redirect_to "/account/details" and return
+          end
+          
           self.current_user = @user
           
           successful_login
