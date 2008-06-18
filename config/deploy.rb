@@ -41,6 +41,6 @@ end
 desc "Copy index.htmll"
 namespace :deploy do
 	task :set_splash, :roles => :app do
-		run("mv #{release_path}/public/prod_index.html #{release_path}/public/index.html")
+		run("mv #{deploy_to}/current/public/prod_index.html #{deploy_to}/current/public/index.html")
 	end
 end
