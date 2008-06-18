@@ -37,3 +37,10 @@ namespace :deploy do
 		run("rm #{deploy_to}/current/config/database.yml && cp #{deploy_to}/shared/config/database.yml #{release_path}/config/")
 	end
 end
+
+desc "Copy index.htmll"
+namespace :deploy do
+	task :set_splash, :roles => :app do
+		run("mv #{release_path}/public/prod_index.html #{release_path}/public/index.html")
+	end
+end

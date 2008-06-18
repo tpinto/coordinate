@@ -50564,3 +50564,76 @@ Rendered events/_talk (0.00128)
 Rendered events/_talk (0.00037)
 Rendered includes/_sidebar (0.00004)
 Completed in 0.12888 (7 reqs/sec) | Rendering: 0.11214 (87%) | DB: 0.00232 (1%) | 200 OK [http://192.168.2.131/]
+
+
+Processing ApplicationController#index (for 192.168.2.131 at 2008-06-18 20:10:54) [GET]
+  Session ID: BAh7CDoMY3NyZl9pZCIlNzlhODgxMTEwNzNhNTNhMjc0ZTIyNjdjZDk5ZGQy
+Yjc6DnJldHVybl90byIGLyIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6
+Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA==--92cfe163111fddb9eacc3175b2f3f6184c1613dd
+  Parameters: {}
+
+
+ActionController::RoutingError (No route matches "/images/banner-500-t.png" with {:method=>:get}):
+    /vendor/rails/actionpack/lib/action_controller/routing/recognition_optimisation.rb:67:in `recognize_path'
+    /vendor/rails/actionpack/lib/action_controller/routing/route_set.rb:384:in `recognize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:148:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:76:in `process'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `synchronize'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/../lib/mongrel/rails.rb:74:in `process'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:282:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `each'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/configurator.rb:281:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:128:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel/command.rb:212:in `run'
+    /opt/local/lib/ruby/gems/1.8/gems/mongrel-1.1.5/bin/mongrel_rails:281
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:502:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:502:in `load'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:502:in `load'
+    /vendor/rails/railties/lib/commands/servers/mongrel.rb:64
+    /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:509:in `require'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:354:in `new_constants_in'
+    /vendor/rails/activesupport/lib/active_support/dependencies.rb:509:in `require'
+    /vendor/rails/railties/lib/commands/server.rb:39
+    /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `gem_original_require'
+    /opt/local/lib/ruby/site_ruby/1.8/rubygems/custom_require.rb:27:in `require'
+    script/server:3
+
+Rendering /Users/tpinto/Projects/barcamp/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (not_found)
+
+
+Processing EventsController#index (for 192.168.2.131 at 2008-06-18 20:12:19) [GET]
+  Session ID: BAh7CDoMY3NyZl9pZCIlNzlhODgxMTEwNzNhNTNhMjc0ZTIyNjdjZDk5ZGQy
+Yjc6DnJldHVybl90byIGLyIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6
+Rmxhc2g6OkZsYXNoSGFzaHsABjoKQHVzZWR7AA==--92cfe163111fddb9eacc3175b2f3f6184c1613dd
+  Parameters: {"action"=>"index", "controller"=>"events"}
+  [4;36;1mEvent Load (0.000378)[0m   [0;1mSELECT * FROM "events" WHERE ("events"."alias" = 'barcamppt08') LIMIT 1[0m
+Rendering template within layouts/twocols
+Rendering events/index
+  [4;35;1mUser Load (0.000748)[0m   [0mSELECT * FROM "users" INNER JOIN "events_users" ON "users".id = "events_users".user_id WHERE ("events_users".event_id = 2 ) [0m
+Rendered events/_user (0.00014)
+  [4;36;1mSQL (0.000447)[0m   [0;1mSELECT count(*) AS count_all FROM "talks" WHERE ("talks".event_id = 2) [0m
+  [4;35;1mTalk Load (0.000448)[0m   [0mSELECT * FROM "talks" WHERE ("talks".event_id = 2) [0m
+  [4;36;1mUser Load (0.000572)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 28) [0m
+Rendered events/_talk (0.00128)
+  [4;35;1mCACHE (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 28) [0m
+Rendered events/_talk (0.00034)
+Rendered includes/_sidebar (0.00003)
+Completed in 0.03854 (25 reqs/sec) | Rendering: 0.02108 (54%) | DB: 0.00259 (6%) | 200 OK [http://192.168.2.131/]
