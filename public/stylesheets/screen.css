@@ -1,126 +1,127 @@
 html {
-  background: #344B6F;
+	background: #111 url("/images/back.png") no-repeat top center;
 }
 
 body {
-  font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
+	font-family: Helvetica, Arial, "MS Trebuchet", sans-serif;
 }
 
 #doc2 {
-  border-width: 0px 4px 4px;
-  border-style: solid;
-  border-color: #7787A2;
-  margin: 0px auto;
-  padding: 10px 30px;
-  background: #fff url(/images/grad.gif) repeat-x;
+	width: 850px;
+	margin: 0px auto;
+	padding: 10px 30px;
+	background: transparent;
+	color: #ddd;
+}
+
+p {
+	line-height: 1.5em;
 }
 
 #hd {
-  text-align: center;
+	padding: 2em 0;
+	text-align: center;
+}
+
+#hd h2 {
+	font-size: 12px;
 }
 
 #bd {
-  margin-top: 50px;
+	margin-top: 50px;
 }
 
 #sb {
-  border-left: 1px dotted #B8D2FF;
-  padding-left: 20px;
+	padding-left: 20px;
 }
 
 #ft {
-  border-top: 1px solid #7787A2;
-  padding-top: 8px;
-  margin-top: 15px;
-  text-align: right;
+	border-top:  1px solid #222;
+	padding: 15px;
+	font-size: 10px;
+	color: #666;
+	margin-top: 15px;
+	text-align: center;
 }
 
 #intro {
-  padding-right: 15px;
+	padding-right: 25px;
 }
 
 #menu a {
-  background: #344B6F;
-  padding: 3px 5px;
-  color: #fff;
-  text-decoration: none;
-  margin: 0px 3px;
+	background: #344B6F;
+	padding: 3px 5px;
+	color: #fff;
+	text-decoration: none;
+	margin: 0px 3px;
 }
 
 #menu a:hover {
-  text-decoration: underline;
+	text-decoration: underline;
 }
 
-/*
-//*fieldset#regular_login, fieldset#openid_login {
-//*  height: 7em; 
-//*}
-* 
-fieldset {
-  text-align: right;
-}
-*/
+
 form input[type="submit"] {
-  float: right;
+	float: right;
 }
 
 input[type="text"], input[type="password"] {
-  border: 1px solid #000;
-  padding: 3px 2px 2px;
-  font-size: 1.1em;
-  width: 200px;
+	border: 1px solid #000;
+	padding: 3px 2px 2px;
+	font-size: 1.1em;
+	width: 200px;
 }
 
 input.wide {
-  width: 400px;
+	width: 400px;
 }
 
 textarea {
-  border: 1px solid #000;
-  padding: 3px 2px 2px;
-  font-size: 1.1em;
-  width: 400px;
-  height: 100px;
+	border: 1px solid #000;
+	padding: 3px 2px 2px;
+	font-size: 1.1em;
+	width: 400px;
+	height: 100px;
 }
 
 
 a {
-  /*color: #008040;*/
-  color: #934B31;
+	/*color: #008040;*/
+	color: #934B31;
 }
 
 a:hover {
-  /*color: #008040;*/
-  color: #973836;
+	/*color: #008040;*/
+	color: #973836;
 }
 
 .mb {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 h1 img.icon {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 img.icon {
-  vertical-align: middle;
+	vertical-align: middle;
 }
 
 #openid_url {
-  background: url(/images/openid.gif) no-repeat #FFF 5px;
-  padding-left: 25px;
+	background: url(/images/openid.gif) no-repeat #FFF 5px;
+	padding-left: 25px;
 }
 
 .error {
-  background: #FFADB0;
-  border: 1px solid #FF4845;
-  padding: 4px 3px 3px;
+	background: #FFADB0;
+	border: 1px solid #FF4845;
+	padding: 4px 3px 3px;
 }
 
 .success {
-  background: #CEFFCB;
-  border: 1px solid #008040;
-  padding: 4px 3px 3px;
+	background: #CEFFCB;
+	border: 1px solid #008040;
+	padding: 4px 3px 3px;
 }
 
 /* utilities */
