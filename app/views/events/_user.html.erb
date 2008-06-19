@@ -1,1 +1,4 @@
-<li><%= link_to user, user_path(user) %></li>
+<% hcard "li" do |card| %>
+	<%= card.photo :src => user.gravatar(24) %>
+	<%= card.name user.to_s, :url => user.url, :local_url => user_path(user) %>
+<% end %>

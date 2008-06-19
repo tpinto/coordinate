@@ -130,3 +130,21 @@ img.icon {
 .fl{float:left;}
 .al{text-align:left;}
 .ac{text-align:center;}
+
+/** Microformats hCard **/
+li.vcard {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+
+.vcard .fn {
+  font-size: 1.1em;
+}
+
+.vcard * {
+  vertical-align: middle;
+}
+
+.vcard .photo {
+  margin-right: 5px;
+}

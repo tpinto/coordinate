@@ -9,11 +9,23 @@
 <body>
 <div id="doc2" class="yui-t6">
 	
-	<div id="hd">
-		<a href="/"><img alt="Barcamp Portugal" src="/images/banner-333-t.png" /></a>
-		<h2>A acontecer em Coimbra nos dias 6 e 7 de Setembro de 2008.</h2>
+	<div id="hd" class="vevent">
+		<a class="url" href="http://barcamp.webreakstuff.com/">
+			<img class="summary" alt="Barcamp Portugal" src="/images/banner-333-t.png" />
+		</a>
+		<h2>A acontecer no <abbr title="Departamento de Engenharia Informática da Universidade de Coimbra" class="location">Dep. Informática, Coimbra</abbr> nos dias <abbr class="dtstart" title="2008-09-06">6</abbr> e <abbr class="dtend" title="2008-09-08">7</abbr> de Setembro de 2008.</h2>
 		<%= menu %>
 	</div>
+	
+	<% hcalendar "div", {:id => "hd"} %>
+	
+	<% hcalendar "div#hd" do |cal| %>
+		<%= cal.url "<img class=\"summary\" alt=\"Barcamp Portugal\" src=\"/images/banner-333-t.png\" />", :href => "http://barcamp.webreakstuff.com/" %>
+		<h2>
+			A acontecer no <%= cal.location "Dep. Informática, Coimbra", :title => "Departamento de Engenharia Informática da Universidade de Coimbra" %> nos dias <%= cal.dtstart "6", :title => "2008-09-06" %> e <%= cal.dtend "7", :title => "2008-09-08" %> de Setembro de 2008.
+		</h2>
+		<%= menu %>
+	<% end %>
 	
 	<div id="bd">
 		<div id="yui-main">

@@ -1,4 +1,6 @@
 require 'digest/sha1'
+require 'MD5'
+
 class User < ActiveRecord::Base
   has_many :talks
   has_and_belongs_to_many :events
@@ -37,8 +39,18 @@ class User < ActiveRecord::Base
     !self.identity_url.blank?
   end
   
+  def gravatar(size = 64)
+    "http://gravatar.com/avatar/#{MD5::md5(self.email)}.jpg?s=#{size}"
+  end
+  
   def public?
     self.public_profile
+  end
+  
+  def url
+    url = self.personal_url
+    url = "http://" + url unless url.nil? || url.starts_with?("http://")
+    return url || self.identity_url || ""
   end
   
   def has_info?

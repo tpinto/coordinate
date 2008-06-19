@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   after_filter :store_location
   
   helper :all # include all helpers, all the time
+  helper :microformats
   
   layout "twocols"
 
