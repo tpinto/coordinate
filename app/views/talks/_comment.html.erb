@@ -1,0 +1,11 @@
+<div class="comment clearfix">
+	<div class="avatar">
+		<a href="<%=user_path(comment.user)%>">
+		<%= image_tag comment.user.gravatar(64) %><br>
+		<%= comment.user %>
+		</a>
+	</div>
+	<div class="body">
+		<%= comment.body %>
+	</div>
+</div>

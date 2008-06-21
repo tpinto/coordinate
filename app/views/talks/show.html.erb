@@ -1,6 +1,11 @@
-<h1><%= @talk.title %><h1>
-<h3><%= @talk.description %></h2>
+<h1><%= @talk.title %></h1>
+
+<p><%= @talk.description %></p>
 	
-<p>
-	Em breve, vai haver a possibilidade de comentar e discutir a sessão aqui.	
-</p>
+<strong>Comments (<%= @talk.comments_count %>)</strong><br/>
+<%= render :partial => "comment", :collection => @talk.comments %>
+O teu comment:
+<% form_for :comment, :url => {:controller => "comments", :action => "create", :id => @talk.id} do |f| %>
+	<%= f.text_area :body %>
+	<%= f.submit "Submit &raquo;"%>
+<% end %>

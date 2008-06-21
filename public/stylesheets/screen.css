@@ -1,5 +1,5 @@
 html {
-	background: #111 url("/images/back.png") no-repeat top center;
+	background: #111 url("/images/back.png") repeat-x top center;
 }
 
 body {
@@ -147,4 +147,42 @@ li.vcard {
 
 .vcard .photo {
   margin-right: 5px;
+}
+
+/** comments **/
+.comment {
+  background: #222;
+  margin: 5px auto;
+  padding: 0px;
+  width: 95%;
+}
+
+.comment .avatar {
+  float:left;
+  background: #fff;
+  color: #000;
+  padding: 3px;
+  text-align: center;
+}
+
+.comment .avatar a {
+  text-decoration: none;
+  color: #000;
+}
+
+.comment .body {
+  float:left;
+  padding: 10px;
+}
+
+.clearfix:after { 
+  content: "."; 
+  display: block; 
+  height: 0;  
+  clear: both;  
+  visibility: hidden;
+}
+
+.haslayout {
+  height: 1%;
 }

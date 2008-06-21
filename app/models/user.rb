@@ -3,6 +3,7 @@ require 'MD5'
 
 class User < ActiveRecord::Base
   has_many :talks
+  has_many :comments
   has_and_belongs_to_many :events
   
   # Virtual attribute for the unencrypted password

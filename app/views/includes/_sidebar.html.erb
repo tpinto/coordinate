@@ -1,6 +1,11 @@
 <h1><img src="/images/notes.png" class="icon"> Informação Geral</h1>
 <strong>Quando:</strong> 6 e 7 de Setembro<br><br>
-<strong>Onde:</strong> Coimbra, Portugal<br>Dep. de Engenharia Informática<br>Universidade de Coimbra (<%= link_to "Google Maps", "http://maps.google.com/maps?ll=40.186086,-8.415313&spn=0.034687,0.090637&om=1"%>)<br><br>
+<strong>Onde:</strong> Coimbra, Portugal<br>Dep. de Engenharia Informática<br>da Universidade de Coimbra (<%= link_to "Google Maps", "http://maps.google.com/maps?ll=40.186086,-8.415313&spn=0.034687,0.090637&om=1"%>)
+<% hgeo "span" do |geo| %>
+	<%= geo.latitude "40.186086" %>
+	<%= geo.longitude "-8.415313" %>
+<% end %>
+<br><br>
 <strong>O quê:</strong> Apresentações, Workshops, Demonstrações<br><br>
 <strong>Mailing list:</strong> <%= link_to "link", "http://groups.google.com/group/barcamp-portugal" %><br><br>
 

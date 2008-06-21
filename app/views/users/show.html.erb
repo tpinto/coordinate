@@ -1,7 +1,10 @@
-<h1><%= @user %></h1>
+<% hcard "div" do |card| %>
+	<h1><%= card.name @user.to_s, :url => @user.url %></h1>
+	<%= card.photo :src => @user.gravatar(80) %>
+<% end %>
 
-<% if @user.public? and @user.has_info? %>
-<h3>Detalhes</h3>
+<% if @user.has_info? %>
+<h2>Detalhes</h2>
 	<%= twitter_profile(@user) %><br>
 	<%= delicious_profile(@user) %><br>
 	<%= personal_url(@user) %><br>
@@ -10,7 +13,7 @@
 <% end %>
 
 
-<h3>Sessões desta pessoa:</h3>
+<h2>Sessões:</h2>
 <li>
 	<%= render :partial => "events/talk", :collection => @user.talks %>
 </li>
