@@ -1,5 +1,5 @@
 require 'digest/sha1'
-require 'MD5'
+require 'md5'
 
 class User < ActiveRecord::Base
   has_many :talks
