@@ -5,9 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.login "login", :controller => "sessions", :action => "new"
   map.signup "signup", :controller => "users", :action => "new"
-  
   map.logout "logout", :controller => "sessions", :action => "destroy"
-  #map.getin "getin", :controller => "account", :action => "getin"
+
+  map.feed "feed.xml", :controller => "events", :action => "feed", :format => "xml"
   
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   

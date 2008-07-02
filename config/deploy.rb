@@ -7,16 +7,14 @@ set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
 #set :scm_passphrase, "p00p" #This is your custom users password
 set :user, "tpinto"
+set :username, "#{user}"
 
 set :application, "barcamp"
-set :domain, "barcamp.webreakstuff.com"
-set :app_dir, "/home/tpinto/barcamp.webreakstuff.com"
+set :domain, "#{application}.webreakstuff.com"
+set :app_dir, "/home/#{username}/#{domain}"
 set :use_sudo, false
 
-set :username, "tpinto"
-set :user, "tpinto"
-
-set :deploy_to, "/home/tpinto/capistrano/barcamp"
+set :deploy_to, "/home/#{username}/capistrano/#{application}"
 
 role :app, "#{domain}"
 role :web, "#{domain}"

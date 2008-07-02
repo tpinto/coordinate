@@ -1,3 +1,3 @@
 <div class="comment clearfix">
-	<span class="commenter"><a class="avatar" href="<%=user_path(comment.user)%>"><%= image_tag comment.user.gravatar(16) %> <%= comment.user %></a>, <%=time_ago_in_words(comment.created_at)%> ago:</span> <%= comment.body %>
+	<span class="commenter"><a class="avatar" href="<%=user_path(comment.user)%>"><%= image_tag comment.user.gravatar(16) %> <%= comment.user %></a>, <%=time_ago_in_words(comment.created_at)%> ago:</span> <%= h comment.body %>
 </div>

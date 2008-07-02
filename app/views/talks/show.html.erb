@@ -1,11 +1,12 @@
-<h1><%= @talk.title %></h1>
-<p><%= @talk.description %></p>
+<h1><%= h @talk.title %></h1>
+<p><%= h @talk.description %></p>
 
 <div id="comments" class="mb clearfix">
 	<h4>Comentários (<%= @talk.comments_count %>)</h4>
 	<%= render :partial => "comment", :collection => @talk.comments %>
 </div>
 
+<% if logged_in? %>
 <div class="clearfix form al">
 	<h4>Novo comentário:</h4>
 	<% form_for :comment, :url => {:controller => "comments", :action => "create", :id => @talk.id} do |f| %>
@@ -13,3 +14,6 @@
 		<%= f.submit "Submit &raquo;"%>
 	<% end %>
 </div>
+<% else %>
+Para deixar um comentário, é preciso fazer login.
+<% end %>

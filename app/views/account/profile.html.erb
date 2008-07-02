@@ -1,13 +1,9 @@
 <h1>Detalhes do profile</h1>
 
-<p>Estes detalhes são usados para criar um hCard, facilitando assim a troca de contactos entre os participantes.</p>
+<div class="mb form">
+<p>Estes detalhes são usados para criar um hCard, facilitando assim a troca de contactos entre os participantes. (Só acessível para utilizadores autenticados)</p>
 
 <% form_for :user do |f| -%>
-
-<p><label for="public">Profile Publico?</label><br/>
-<%= f.check_box :public_profile %></p>
-
-Nota: No caso do profile ser público, serão publicados os próximos campos na lista de inscritos juntamente com um hCard para fácil exportação. Apenas para utilizadores autenticados: nós também odiamos SPAM.
 
 <p><label for="twitter_username">Twitter username</label><br/>
 <%= f.text_field :twitter_username %></p>
@@ -26,3 +22,4 @@ Nota: No caso do profile ser público, serão publicados os próximos campos na 
 
 <p><%= submit_tag 'Submit &raquo;' %></p>
 <% end -%>
+</div>

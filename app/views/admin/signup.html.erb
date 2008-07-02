@@ -1,0 +1,15 @@
+<% form_for :admin, :url => "/admin/signup", :method => :post do |f| -%>
+<fieldset class="mb">
+	<p>
+		<label for="username">Username:</label><br>
+		<%= f.text_field :username %>
+	</p>
+
+	<p>
+		<label for="password">Password:</label><br>
+		<%= f.password_field :password %>
+	</p>
+</fieldset>
+
+<p><%= submit_tag 'Submit &raquo;' %></p>
+<% end -%>

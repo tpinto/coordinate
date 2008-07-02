@@ -12,8 +12,9 @@
 	<%= bio(@user) %><br>
 <% end %>
 
-
+<% if @user.talks.any? %>
 <h2>Sessões:</h2>
 <li>
 	<%= render :partial => "talks/talk", :collection => @user.talks %>
 </li>
+<% end %>

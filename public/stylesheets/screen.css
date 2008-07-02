@@ -199,3 +199,14 @@ li.vcard {
 .haslayout {
   height: 1%;
 }
+
+.announcement {
+  border-left: 5px solid #333;
+  padding-left: 5px;
+  background: #222;
+  padding-top: 1px;
+}
+
+.announcement h3 {
+  margin-top: 5px;
+}
