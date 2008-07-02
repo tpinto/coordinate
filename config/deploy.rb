@@ -34,7 +34,7 @@ end
 desc "Copy database.yml"
 namespace :deploy do
 	task :copy_config, :roles => :app do
-		run("rm #{deploy_to}/current/config/database.yml && cp #{deploy_to}/shared/config/database.yml #{release_path}/config/")
+		run("cp #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml")
 	end
 end
 

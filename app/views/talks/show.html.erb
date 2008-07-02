@@ -1,11 +1,15 @@
 <h1><%= @talk.title %></h1>
-
 <p><%= @talk.description %></p>
-	
-<strong>Comments (<%= @talk.comments_count %>)</strong><br/>
-<%= render :partial => "comment", :collection => @talk.comments %>
-O teu comment:
-<% form_for :comment, :url => {:controller => "comments", :action => "create", :id => @talk.id} do |f| %>
-	<%= f.text_area :body %>
-	<%= f.submit "Submit &raquo;"%>
-<% end %>
+
+<div id="comments" class="mb clearfix">
+	<h4>Comentários (<%= @talk.comments_count %>)</h4>
+	<%= render :partial => "comment", :collection => @talk.comments %>
+</div>
+
+<div class="clearfix form al">
+	<h4>Novo comentário:</h4>
+	<% form_for :comment, :url => {:controller => "comments", :action => "create", :id => @talk.id} do |f| %>
+		<%= f.text_area :body %>
+		<%= f.submit "Submit &raquo;"%>
+	<% end %>
+</div>

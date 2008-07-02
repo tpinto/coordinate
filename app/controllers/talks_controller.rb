@@ -19,6 +19,10 @@ class TalksController < ApplicationController
     render :action => "new"
   end
   
+  def index
+    @talks = @event.talks
+  end
+  
   def show
     @talk = Talk.find(params[:id])
   end

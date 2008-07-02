@@ -8,7 +8,7 @@
 
 <h1>Registo</h1>
 
-<div id="regular_signup" class="al form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
+<div id="regular_signup" class="clearfix form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
 	<a href="/signup/openid"><img src="/images/openid.gif" class="icon"></a> <a href="/signup/openid">Usar OpenID</a><br><br>
 
 <%= flash_message :signup_success, :success %>
@@ -40,7 +40,7 @@
 <% end -%>
 </div>
 
-<div id="openid_signup" class="al form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
+<div id="openid_signup" class="clearfix form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
 	
 	<a href="/signup">Usar Email/Password</a><br><br>
 

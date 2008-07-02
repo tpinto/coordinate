@@ -1,6 +1,6 @@
 <h1>Login</h1>
 
-<div id="regular_login" class="al form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
+<div id="regular_login" class="clearfix al form" <%= open_id_request? ? "style=\"display:none;\"" : "" %>>
 	<a href="/login/openid"><img src="/images/openid.gif" class="icon"></a> <a href="/login/openid">Usar OpenID</a><br><br>
 	
 	<%= flash_message :login_errors, :error %>
@@ -24,7 +24,7 @@
 <% end %>
 </div>
 
-<div id="openid_login" class="al form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
+<div id="openid_login" class="clearfix al form" <%= !open_id_request? ? "style=\"display:none;\"" : "" %>>
 	<a href="/login">Usar Email/Password</a><br><br>
 	
 <% form_tag(session_url) do %>
