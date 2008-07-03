@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   	'ActionController::RoutingError'             => 404,
   	'ActionController::UnknownAction'            => 404,
   	'ActiveRecord::RecordNotFound'               => 404,
+  	'CGI::Session::CookieStore::TamperedWithCookie' => 423,
   	'ActionController::InvalidAuthenticityToken' => 422
   }
   
@@ -45,6 +46,7 @@ class ApplicationController < ActionController::Base
 	def rescue_action(e)
 		log_error(e)
 		status_code = $RESCUE_RESPONSE_CODES[e.class.name]
+		redirect_to "/logout" and return if status_code == 423
 		render_optional_error_file(status_code || 500)
 	end if ENV['RAILS_ENV'] != "development"
 end
