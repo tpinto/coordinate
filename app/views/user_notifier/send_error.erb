@@ -1,0 +1,25 @@
+<%= (@e.respond_to?("original_exception") ? @e.original_exception.class.to_s : @e.class.to_s) %> @ <%= @file %>
+
+Message:
+<%= @e.message.gsub("\n","<br/>") %>
+########
+
+File, line:
+<%= (@e.application_backtrace.first || "").to_s %>
+###########
+
+Source:
+<%= @e.respond_to?("source_extract") ? @e.source_extract : "N/A" %>
+#######
+
+Requested path:
+<%= @path %>
+###############
+
+Params:
+<%= @params %>
+#######
+
+Trace:
+<% @e.clean_backtrace %>
+######
