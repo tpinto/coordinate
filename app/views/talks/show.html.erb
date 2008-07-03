@@ -1,8 +1,9 @@
-<h1><%= h @talk.title %></h1>
-<p><%= h @talk.description %></p>
-
+<div class="leftbar">
+	<h1><%= h @talk.title %></h1>
+	<p><%= h @talk.description %></p>
+</div>
 <div id="comments" class="mb clearfix">
-	<h4>Comentários (<%= @talk.comments_count %>)</h4>
+	<h4 class="mb">Comentários (<%= @talk.comments_count %>)</h4>
 	<%= render :partial => "comment", :collection => @talk.comments %>
 </div>
 

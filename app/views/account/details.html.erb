@@ -1,5 +1,7 @@
 <h1>Account details</h1>
 
+<%= flash_message :message, :success, :div, false %>
+
 <div class="mb form">
 <% form_for :user do |f| -%>
 
@@ -13,6 +15,7 @@
 		<%= f.text_field :email %> <%= flash_message :email_errors, :error, :span %>
 	</p>
 	
+	<% if @user and !@user.used_open_id? %>
 	<p>
 		<label for="password">Password</label><br/>
 		<%= f.password_field :password %> <%= flash_message :password_errors, :error, :span %>
@@ -22,6 +25,7 @@
 		<label for="password_confirmation">Confirm Password</label><br/>
 		<%= f.password_field :password_confirmation %> <%= flash_message :confirmation_errors, :error, :span %>
 	</p>
+	<% end %>
 	
 	<p><%= submit_tag 'Submit &raquo;' %></p>
 <% end -%>

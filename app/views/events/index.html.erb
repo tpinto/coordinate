@@ -7,7 +7,7 @@
 		<h1><img src="/images/mail-24.png" class="icon"> Novidades</h1>
 
 		<% for post in @posts %>
-		<div class="announcement">
+		<div class="leftbar">
 			<h3><%= post.title %>, <%= post.created_at.strftime("%d/%m/%Y - %H:%M")%></h3>
 			<p><%= post.body %><p>
 		</div>

@@ -46,6 +46,6 @@ class AdminController < ApplicationController
   end
   
   def admin_required
-    redirect_to :action => :login and return unless session[:admin]
+    redirect_to "/" and return unless session[:admin]
   end
 end

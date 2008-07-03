@@ -63,8 +63,8 @@ p {
 .form {
   background: #444;
   padding: 20px 20px 10px;
-  width: 80%;
   float: left;
+  width: 90%;
 }
 
 .form a, .form a:visited {
@@ -109,10 +109,6 @@ a:hover {
 	color: #973836;
 }
 
-.mb {
-	margin-bottom: 15px;
-}
-
 h1 img.icon {
 	margin-right: 10px;
 }
@@ -131,12 +127,15 @@ img.icon {
 	border: 1px solid #FF4845;
 	padding: 4px 3px 3px;
 	color: #000;
+	width: 95%;
 }
 
 .success {
 	background: #CEFFCB;
 	border: 1px solid #008040;
-	padding: 4px 3px 3px;
+	padding: 5px;
+	color: #111;
+  width: 95%;
 }
 
 /* utilities */
@@ -145,6 +144,7 @@ img.icon {
 .fl{float:left;}
 .al{text-align:left;}
 .ac{text-align:center;}
+.mb{margin-bottom: 15px;}
 
 /** Microformats hCard **/
 li.vcard {
@@ -166,12 +166,13 @@ li.vcard {
 
 /** comments **/
 .comment {
-  background: #111;
-  border-top: 1px dotted #333;
-  margin: 5px auto;
-  padding: 3px;
+  border-left: 5px solid #333;
+  padding-left: 5px;
+  background: #222;
+  padding-top: 3px;
   width: 90%;
-  float:left;
+  margin-left: 5%;
+  margin-bottom: 10px;
 }
 
 .comment .avatar {
@@ -180,12 +181,16 @@ li.vcard {
 }
 
 .comment .commenter {
-  font-size: 0.8em;
+  font-size: 0.9em;
+  float:left;
+  clear:both;
 }
 
 .comment .body {
   float:left;
-  padding: 10px;
+  clear:both;
+  border-bottom: 1px dotted #ccc;
+  width: 90%;
 }
 
 .clearfix:after { 
@@ -200,13 +205,17 @@ li.vcard {
   height: 1%;
 }
 
-.announcement {
+.leftbar {
   border-left: 5px solid #333;
   padding-left: 5px;
   background: #222;
   padding-top: 1px;
+  width: 100%;
 }
 
-.announcement h3 {
+.leftbar h3, .leftbar h1 {
   margin-top: 5px;
+  margin-bottom: 3px;
+  border-bottom: 1px dotted #ccc;
+  width: 95%;
 }

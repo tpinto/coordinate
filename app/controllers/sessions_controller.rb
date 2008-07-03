@@ -48,20 +48,19 @@ class SessionsController < ApplicationController
       when :successful
           @user = User.find_or_create_by_identity_url(identity_url)
           
-          if @user.new_record?
+          if @user.new_record? or @user.name.blank? or @user.email.blank?
             @user.name = registration['fullname']
             @user.email = registration['email']
             @user.status = 1
             @user.save(false)
           end
           
-          if @user.name.blank? or @user.email.blank?
-            flash[:message] = "Preencha, por favor, o nome e email para mostrar na lista de inscritos e receber notificações (poucas)."
-            redirect_to "/account/details" and return
-          end
-          
           self.current_user = @user
           
+          if @user.name.blank?
+            flash[:message] = "O registo foi efectuado com sucesso :)<br/>O nome é obrigatório para a inscrição.<br/>O email, apesar de opcional, é útil para enviar notificações."
+            redirect_to "/account/details" and return
+          end          
           successful_login
       end
     end
