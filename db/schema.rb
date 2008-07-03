@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080703173925) do
+ActiveRecord::Schema.define(:version => 20080703205251) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -82,12 +82,12 @@ ActiveRecord::Schema.define(:version => 20080703173925) do
     t.datetime "remember_token_expires_at"
     t.string   "identity_url"
     t.string   "activation_code"
-    t.integer  "status",                                  :default => 0
+    t.integer  "status",                                   :default => 0
     t.string   "twitter_username"
     t.string   "delicious_username"
     t.string   "personal_url"
     t.string   "company"
-    t.string   "bio"
+    t.text     "bio",                       :limit => 255
     t.boolean  "public_profile"
   end
 
