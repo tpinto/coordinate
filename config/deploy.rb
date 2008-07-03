@@ -21,7 +21,7 @@ role :web, "#{domain}"
 role :db,  "#{domain}", :primary => true
 
 after "deploy:update_code", "deploy:copy_config"
-before "deploy:restart", "deploy:set_splash"
+#before "deploy:restart", "deploy:set_splash"
 
 desc "Restart the mongrel cluster"
 namespace :deploy do
