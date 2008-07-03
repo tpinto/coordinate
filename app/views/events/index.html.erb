@@ -19,11 +19,17 @@
 		<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
 		<ul>
 			<%= render :partial => "user", :collection => @users %>
+			<% if @users.empty? %>
+				<li>nenhum. ainda :)</li>
+			<% end %>
 		</ul>
 	</div>
 	<div class="yui-u">
 		<h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
 		<ul>
 			<%= render :partial => "talks/talk", :collection => @talks %>
+			<% if @talks.empty? %>
+				<li>nenhuma. ainda :)</li>
+			<% end %>
 		</ul>
 	</div>
