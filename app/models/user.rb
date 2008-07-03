@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
   
   def public?
-    self.public_profile
+    true
   end
   
   def url

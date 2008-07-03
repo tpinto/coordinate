@@ -2,9 +2,9 @@ xml.instruct!
 
 xml.rss "version" => "2.0" do
   xml.channel do
-    xml.title       "Barcamp PT '08 - Novidades"
+    xml.title       "Barcamp PT '08"
     xml.link        "http://barcamp.webreakstuff.com/"
-    xml.description "As novidades do Barcamp Portugal 2008, trazidas até si pela magia da internet."
+    xml.description "As novidades do Barcamp Portugal 2008, divulgadas pela magia da internet."
 
     @items.each do |item|
       xml.item do
