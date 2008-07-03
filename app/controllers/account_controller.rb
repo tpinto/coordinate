@@ -1,4 +1,5 @@
 class AccountController < ApplicationController
+  before_filter :login_required, :except => [:login, :logout]
 
   def profile
     @user = self.current_user if logged_in?

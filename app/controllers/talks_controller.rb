@@ -1,4 +1,6 @@
 class TalksController < ApplicationController
+  before_filter :login_required, :except => [:show, :index]
+
 
   def create
     @talk = Talk.new(params[:talk])

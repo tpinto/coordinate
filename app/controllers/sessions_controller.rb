@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_filter :login_from_cookie, :except => [:destroy]
   
   def create
     failed_openid_login "Por favor, introduza um OpenID válido." and return if using_open_id_but_without_open_id?

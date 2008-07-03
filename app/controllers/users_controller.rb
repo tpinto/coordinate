@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :login_required, :only => [:show]
   
   # shows the signup form
   def new
