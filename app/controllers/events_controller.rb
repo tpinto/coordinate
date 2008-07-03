@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   
   def index
-    raise "lalal"
     @users = @event.users
     @talks = @event.talks
     @posts = Post.find :all, :order => "id DESC"

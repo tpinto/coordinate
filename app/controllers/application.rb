@@ -40,11 +40,11 @@ class ApplicationController < ActionController::Base
 		super(e) # this will log the exception to the log as fatal using the original log_error method from Rails
 		# then we'll log the error into the database as well
 		UserNotifier.deliver_send_error(e,"#{self.class.to_s}##{params[:action]}","#{request.env['REQUEST_METHOD']} #{request.env['REQUEST_URI']} #{request.env['SERVER_PROTOCOL']}",params.inspect) unless $RESCUE_RESPONSE_CODES[e.class.name] == 404
-	end #if ENV['RAILS_ENV'] != "development"
+	end if ENV['RAILS_ENV'] != "development"
 		
 	def rescue_action(e)
 		log_error(e)
 		status_code = $RESCUE_RESPONSE_CODES[e.class.name]
 		render_optional_error_file(status_code || 500)
-	end #if ENV['RAILS_ENV'] != "development"
+	end if ENV['RAILS_ENV'] != "development"
 end
