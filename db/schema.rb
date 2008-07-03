@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080702135828) do
+ActiveRecord::Schema.define(:version => 20080703173925) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -56,14 +56,14 @@ ActiveRecord::Schema.define(:version => 20080702135828) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.string   "body"
+    t.text     "body",       :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "talks", :force => true do |t|
     t.string   "title"
-    t.string   "description"
+    t.text     "description",    :limit => 255
     t.integer  "user_id"
     t.integer  "event_id"
     t.datetime "created_at"
