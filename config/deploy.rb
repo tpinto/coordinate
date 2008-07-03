@@ -1,11 +1,8 @@
-#default_run_options[:pty] = true
-#set :repository,  "git@github.com:tpinto/coordinate.git"
 set :repository,  "git://github.com/tpinto/coordinate.git"
 set :scm, "git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 set :git_shallow_clone, 1
-#set :scm_passphrase, "p00p" #This is your custom users password
 set :user, "tpinto"
 set :username, "#{user}"
 
@@ -34,6 +31,7 @@ desc "Copy database.yml"
 namespace :deploy do
 	task :copy_config, :roles => :app do
 		run("cp #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml")
+		run("cp #{deploy_to}/shared/config/production.rb #{release_path}/config/environments/production.rb")
 	end
 end
 
