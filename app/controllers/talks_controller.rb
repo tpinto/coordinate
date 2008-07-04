@@ -22,7 +22,7 @@ class TalksController < ApplicationController
   end
   
   def index
-    @talks = @event.talks
+    @talks = Talk.find :all, :order => "id DESC"
   end
   
   def show

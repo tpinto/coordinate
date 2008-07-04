@@ -1,0 +1,7 @@
+<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
+<ul>
+	<%= render :partial => "users/user", :collection => @users %>
+	<% if @users.empty? %>
+		<li>nenhum. ainda :)</li>
+	<% end %>
+</ul>

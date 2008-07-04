@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def index
+    @users = User.find :all, :order => "id DESC"
+  end
+  
   # receives the new user form post
   def create
     @user = User.new(params[:user])

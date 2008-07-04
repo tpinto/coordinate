@@ -1,8 +1,10 @@
 class EventsController < ApplicationController
   
   def index
-    @users = @event.users
-    @talks = @event.talks
+    @users = User.find :all, :order => "id DESC", :limit => 10
+    @user_count = User.count
+    @talks = Talk.find :all, :order => "id DESC", :limit => 5
+    @talk_count = Talk.count
     @posts = Post.find :all, :order => "id DESC"
   end
   

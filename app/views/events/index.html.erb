@@ -18,11 +18,14 @@
 	<div class="yui-u first">
 		<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
 		<ul>
-			<%= render :partial => "user", :collection => @users %>
+			<%= render :partial => "users/user", :collection => @users %>
 			<% if @users.empty? %>
 				<li>nenhum. ainda :)</li>
 			<% end %>
 		</ul>
+		<% if @user_count > 10 %>
+			<a href="/users">Ver a lista completa</a>
+		<% end %>
 	</div>
 	<div class="yui-u">
 		<h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
@@ -32,4 +35,7 @@
 				<li>nenhuma. ainda :)</li>
 			<% end %>
 		</ul>
+		<% if @talk_count > 4 %>
+			<a href="/talks">Ver a lista completa</a>
+		<% end %>
 	</div>
