@@ -49,9 +49,25 @@ class User < ActiveRecord::Base
   end
   
   def url
-    url = self.personal_url
-    url = "http://" + url unless url.nil? || url.starts_with?("http://")
-    return url || self.identity_url || ""
+    main_url || twitter_url || delicious_url
+  end
+  
+  def main_url
+    if !self.personal_url.nil? and !self.personal_url.blank?
+      personal = self.personal_url
+      personal = "http://#{personal}" unless personal.starts_with?("http://")
+      return personal
+    else
+      return nil
+    end
+  end
+  
+  def twitter_url
+    !self.twitter_username.blank? ? "http://twitter.com/#{self.twitter_username}" : nil
+  end
+  
+  def delicious_url
+    !self.delicious_username.blank? ? "http://del.icio.us/#{self.delicious_username}" : nil
   end
   
   def has_info?

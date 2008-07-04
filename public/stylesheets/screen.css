@@ -182,15 +182,13 @@ li.vcard {
 
 .comment .commenter {
   font-size: 0.9em;
-  float:left;
-  clear:both;
+  border-bottom: 1px dotted #ccc;
+  width: 95%;
 }
 
-.comment .body {
-  float:left;
-  clear:both;
-  border-bottom: 1px dotted #ccc;
-  width: 90%;
+.comment p.body {
+  margin-bottom: 0px;
+  padding: 3px 5px;
 }
 
 .clearfix:after { 
@@ -211,11 +209,32 @@ li.vcard {
   background: #222;
   padding-top: 1px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
-.leftbar h3, .leftbar h1 {
+.leftbar h3, .leftbar h1, .leftbar h2 {
   margin-top: 5px;
   margin-bottom: 3px;
-  border-bottom: 1px dotted #ccc;
   width: 95%;
+  border-bottom: 1px dotted #ccc;
+
+}
+
+.leftbar.narrow {
+  width: 95%;
+}
+
+.leftbar h1.talk {
+  border:none;
+  margin-top: 3px;
+}
+
+.leftbar h2.smaller {
+  font-size: 0.9em;
+  border-bottom: 1px dotted #ccc;
+}
+
+.leftbar p {
+  margin: 0px;
+  margin-top: 10px;
 }
