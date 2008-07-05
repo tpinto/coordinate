@@ -1,7 +1,7 @@
 <div class="leftbar narrow">
 	<h1 class="talk"><%= h @talk.title %></h1>
 	<h2 class="smaller"><%= image_tag @talk.user.gravatar(16), :alt => "" %> <%= @talk.user.name %></h2>
-	<p><%= h @talk.description %></p>
+	<p><%= h(@talk.description).gsub(/\n\r/,"</p><p>") %></p>
 </div>
 
 <div id="comments" class="mb clearfix">
