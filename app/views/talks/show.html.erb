@@ -1,7 +1,7 @@
 <div class="leftbar narrow">
 	<h1 class="talk"><%= h @talk.title %></h1>
 	<h2 class="smaller"><%= image_tag @talk.user.gravatar(16), :alt => "" %> <%= @talk.user.name %></h2>
-	<p><%= h(@talk.description).gsub(/\n\r/,"</p><p>") %></p>
+	<%= white_list @talk.body_html %>
 </div>
 
 <div id="comments" class="mb clearfix">
@@ -11,7 +11,7 @@
 
 <% if logged_in? %>
 <div class="clearfix form al">
-	<h4>Novo comentário:</h4>
+	<h4>Novo comentário (aceita <%= textile_link "textile" %>):</h4>
 	<% form_for :comment, :url => {:controller => "comments", :action => "create", :id => @talk.id} do |f| %>
 		<%= f.text_area :body %>
 		<%= f.submit "Submit &raquo;"%>

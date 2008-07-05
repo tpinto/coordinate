@@ -1,6 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
   
+  def textile_link(text)
+    %Q|<a href="http://hobix.com/textile/quick.html" target="_blank" onclick='window.open("http://hobix.com/textile/quick.html","redRef","height=600,width=550,channelmode=0,dependent=0,directories=0,fullscreen=0,location=0,menubar=0,resizable=0,scrollbars=1,status=1,toolbar=0");return false;'>#{text}</a>|
+  end
+  
   def login_logout
     if logged_in?
       link_to("Adicionar sessão", new_talk_url) +

@@ -1,7 +1,6 @@
 class TalksController < ApplicationController
   before_filter :login_required, :except => [:show, :index]
 
-
   def create
     @talk = Talk.new(params[:talk])
     
@@ -27,9 +26,12 @@ class TalksController < ApplicationController
   
   def show
     @talk = Talk.find(params[:id])
+    
+    render :layout => "textile_help"
   end
   
   def new
+    render :layout => "textile_help"
   end
 
   def destroy

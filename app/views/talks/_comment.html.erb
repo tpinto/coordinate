@@ -4,5 +4,5 @@
 			<%= image_tag comment.user.gravatar(16), :alt => "" %> <%= comment.user %>
 		</a>, <%=time_ago_in_words(comment.created_at)%> ago
 	</h4>
-	<p class="body"><%= h(comment.body).gsub(/\n\r/,"</p><p>") %></p>
+	<p class="body"><%= white_list comment.body_html %></p>
 </div>

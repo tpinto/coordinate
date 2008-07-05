@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080703205251) do
+ActiveRecord::Schema.define(:version => 20080705180543) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
@@ -20,10 +20,11 @@ ActiveRecord::Schema.define(:version => 20080703205251) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
-    t.integer  "talk_id"
-    t.integer  "user_id"
+    t.integer  "talk_id",    :limit => 11
+    t.integer  "user_id",    :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "body_html"
   end
 
   create_table "events", :force => true do |t|
@@ -35,13 +36,13 @@ ActiveRecord::Schema.define(:version => 20080703205251) do
   end
 
   create_table "events_users", :id => false, :force => true do |t|
-    t.integer "event_id"
-    t.integer "user_id"
+    t.integer "event_id", :limit => 11
+    t.integer "user_id",  :limit => 11
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
-    t.integer "issued"
-    t.integer "lifetime"
+    t.integer "issued",     :limit => 11
+    t.integer "lifetime",   :limit => 11
     t.string  "handle"
     t.string  "assoc_type"
     t.binary  "server_url"
@@ -49,26 +50,28 @@ ActiveRecord::Schema.define(:version => 20080703205251) do
   end
 
   create_table "open_id_authentication_nonces", :force => true do |t|
-    t.integer "timestamp",  :null => false
+    t.integer "timestamp",  :limit => 11,                 :null => false
     t.string  "server_url"
-    t.string  "salt",       :null => false
+    t.string  "salt",                     :default => "", :null => false
   end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.text     "body",       :limit => 255
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "body_html"
   end
 
   create_table "talks", :force => true do |t|
     t.string   "title"
-    t.text     "description",    :limit => 255
-    t.integer  "user_id"
-    t.integer  "event_id"
+    t.text     "description"
+    t.integer  "user_id",          :limit => 11
+    t.integer  "event_id",         :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comments_count"
+    t.integer  "comments_count",   :limit => 11, :default => 0
+    t.text     "description_html"
   end
 
   create_table "users", :force => true do |t|
@@ -82,12 +85,12 @@ ActiveRecord::Schema.define(:version => 20080703205251) do
     t.datetime "remember_token_expires_at"
     t.string   "identity_url"
     t.string   "activation_code"
-    t.integer  "status",                                   :default => 0
+    t.integer  "status",                    :limit => 11, :default => 0
     t.string   "twitter_username"
     t.string   "delicious_username"
     t.string   "personal_url"
     t.string   "company"
-    t.text     "bio",                       :limit => 255
+    t.text     "bio"
     t.boolean  "public_profile"
   end
 
