@@ -1,7 +1,4 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-# one:
-#   column: value
-#
-# two:
-#   column: value
+barcamppt08:
+  name: "Barcamp Portugal 2008"
+  description: "A acontecer em Coimbra, a 6 e 7 de Setembro"
+  alias: barcamppt08

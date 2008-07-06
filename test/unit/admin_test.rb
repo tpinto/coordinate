@@ -1,8 +1,18 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class AdminTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+  def test_validity
+    a = Admin.new
+    
+    assert_not_valid a
+   
+    a.username = "admin"
+    
+    assert_not_valid a
+    
+    a.password = "lalala"
+    
+    assert_valid a
   end
 end

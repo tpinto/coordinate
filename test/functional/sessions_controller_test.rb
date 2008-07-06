@@ -1,8 +1,16 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+  def test_login
+    get :new
+    
+    assert_nil session[:user]
+    
+    login_as :quentin
+    
+    assert_not_nil session[:user]
+    assert_equal users(:quentin).id, session[:user]
   end
+
 end

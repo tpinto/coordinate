@@ -1,8 +1,18 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class PostTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+  def test_validity
+    p = Post.new
+    
+    assert_not_valid p
+    
+    p.title = "testes, muitos testes"
+    
+    assert_not_valid p
+    
+    p.body = "lorem ipsum, la la la"
+    
+    assert_valid p
   end
 end

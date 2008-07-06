@@ -1,4 +1,8 @@
+<% cache "talks_page" do %>
+
 <h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
 <ul>
 	<%= render :partial => "talk", :collection => @talks %>
 </ul>
+
+<% end %>

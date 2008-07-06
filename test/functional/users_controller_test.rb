@@ -1,8 +1,21 @@
-require 'test_helper'
+require File.dirname(__FILE__) + '/../test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  def test_truth
-    assert true
+
+  def test_index_caching
+    get :index
+    assert_cached_fragment "users_page"
+
+    create_user
+    assert_not_cached_fragment "users_page"
+    
+    get :index
+    assert_cached_fragment "users_page"
+  end
+  
+protected
+  
+  def create_user
+    post :create, :user => {:name => "joao ratao", :email => "joao@example.com", :password => "teste", :password_confirmation => "teste"}
   end
 end

@@ -3,7 +3,7 @@ class Talk < ActiveRecord::Base
   belongs_to :event
   has_many :comments
   
-  validates_presence_of :title, :user
+  validates_presence_of :title, :user, :description #, :event
   
   format_attribute :description
   

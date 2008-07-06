@@ -24,7 +24,9 @@ class TalksController < ApplicationController
   end
   
   def index
-    @talks = Talk.find :all, :order => "id DESC"
+    unless fragment_exist?("talks_page")
+      @talks = Talk.find :all, :order => "id DESC"
+    end
   end
   
   def show

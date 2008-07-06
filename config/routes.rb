@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :talks
   map.resources :events
   map.resources :users
+  map.resources :comments
   
   # The priority is based upon order of creation: first created -> highest priority.
 
