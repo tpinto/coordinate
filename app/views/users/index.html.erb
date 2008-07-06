@@ -1,7 +1,11 @@
-<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
-<ul>
-	<%= render :partial => "users/user", :collection => @users %>
-	<% if @users.empty? %>
-		<li>nenhum. ainda :)</li>
-	<% end %>
-</ul>
+<% cache "users_page" do %>
+	Até este momento, estão inscritas <%= @users.size %> pessoas, <%= @openid_count %> das quais usaram OpenID.
+	
+	<h2><img src="/images/phone.png" class="icon"> Users inscritos (<%= @users.size %>)</h2>
+	<ul>
+		<%= render :partial => "users/user", :collection => @users %>
+		<% if @users.empty? %>
+			<li>nenhum. ainda :)</li>
+		<% end %>
+	</ul>
+<% end %>

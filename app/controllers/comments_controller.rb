@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   before_filter :login_required
   
+  cache_sweeper :comment_sweeper, :only => [:create]
+  
   def create
     @comment = Comment.new(params[:comment])
     @comment.talk_id = params[:id]

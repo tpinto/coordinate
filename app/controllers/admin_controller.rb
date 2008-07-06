@@ -3,6 +3,8 @@ class AdminController < ApplicationController
   before_filter :signup_first_user, :except => [:signup]
   before_filter :no_more_than_one_signup, :only => [:signup]
   
+  cache_sweeper :post_sweeper, :only => [:new_post]
+  
   def signup
     @admin = Admin.new
     

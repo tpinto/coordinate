@@ -1,5 +1,7 @@
 class TalksController < ApplicationController
   before_filter :login_required, :except => [:show, :index]
+  
+  cache_sweeper :talk_sweeper, :only => [:create]
 
   def create
     @talk = Talk.new(params[:talk])
@@ -11,6 +13,7 @@ class TalksController < ApplicationController
     @talk.save!
     
     flash[:message] = "Talk adicionada :)"
+
     redirect_to root_path
     
   rescue ActiveRecord::RecordInvalid
@@ -32,13 +35,5 @@ class TalksController < ApplicationController
   
   def new
     render :layout => "textile_help"
-  end
-
-  def destroy
-    @talk = Talk.find_by_id_and_user_id(params[:id],current_user.id)
-    @talk.destroy
-    
-    flash[:message] = "Talk apagada :)"
-    redirect_to root_path
   end
 end

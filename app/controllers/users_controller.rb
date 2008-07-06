@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:show]
   
+  cache_sweeper :user_sweeper, :only => [:create]
+  
   # shows the signup form
   def new
   end
@@ -10,7 +12,10 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.find :all, :order => "id DESC"
+    unless fragment_exist?("users_page")
+      @users = User.find :all, :order => "id DESC"
+      @openid_count = User.count :conditions => "identity_url is not null"
+    end
   end
   
   # receives the new user form post

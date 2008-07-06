@@ -1,41 +1,47 @@
 <% content_for :intro do %>
-	<div class="yui-b first" id="intro">
-		<h1><img src="/images/mail-24.png" class="icon"> O que é o Barcamp Portugal?</h1>
-		<p>O Barcamp Portugal nasceu em 2006 e pretende ser um ponto de encontro de gente que se junta para falar nos mais variados temas que, normalmente, gravitam em torno de Inovação, Empreendorismo e Web.</p>
-		<p>Este ano, optámos por usar este site em vez da tradicional wiki por permitir uma gestão mais rigorosa dos inscritos (no evento e nas refeições, mais tarde) e esperemos que facilite a comunicação entre as pessoas.</p>
-		
-		<h1><img src="/images/mail-24.png" class="icon"> Novidades <a href="/feed.xml"><img src="/images/rss-16.png" class="icon" style="margin-right:0px"></a></h1>
-
-		<% for post in @posts %>
-		<div class="leftbar">
-			<h3><%= post.title %>, <%= post.created_at.strftime("%d/%m/%Y - %H:%M")%></h3>
-			<p><%= white_list post.body_html %><p>
+	<% cache "home_intro" do %>
+		<div class="yui-b first" id="intro">
+			<h1><img src="/images/mail-24.png" class="icon"> O que é o Barcamp Portugal?</h1>
+			<p>O Barcamp Portugal nasceu em 2006 e pretende ser um ponto de encontro de gente que se junta para falar nos mais variados temas que, normalmente, gravitam em torno de Inovação, Empreendorismo e Web.</p>
+			<p>Este ano, optámos por usar este site em vez da tradicional wiki por permitir uma gestão mais rigorosa dos inscritos (no evento e nas refeições, mais tarde) e esperemos que facilite a comunicação entre as pessoas.</p>
+			
+			<h1><img src="/images/mail-24.png" class="icon"> Novidades <a href="/feed.xml"><img src="/images/rss-16.png" class="icon" style="margin-right:0px"></a></h1>
+    	
+			<% for post in @posts %>
+			<div class="leftbar">
+				<h3><%= post.title %>, <%= post.created_at.strftime("%d/%m/%Y - %H:%M")%></h3>
+				<p><%= white_list post.body_html %><p>
+			</div>
+			<% end %>
 		</div>
-		<% end %>
-	</div>
+	<% end %>
 <% end %>
 
-	<div class="yui-u first">
-		<h2><img src="/images/phone.png" class="icon"> Users inscritos</h2>
-		<ul>
-			<%= render :partial => "users/user", :collection => @users %>
-			<% if @users.empty? %>
-				<li>nenhum. ainda :)</li>
+	<% cache "home_users" do %>
+		<div class="yui-u first">
+			<h2><img src="/images/phone.png" class="icon"> Users inscritos (<%=@user_count%>)</h2>
+			<ul>
+				<%= render :partial => "users/user", :collection => @users %>
+				<% if @users.empty? %>
+					<li>nenhum. ainda :)</li>
+				<% end %>
+			</ul>
+			<% if @user_count > 10 %>
+				<a href="/users">Ver a lista completa</a>
 			<% end %>
-		</ul>
-		<% if @user_count > 10 %>
-			<a href="/users">Ver a lista completa</a>
-		<% end %>
-	</div>
-	<div class="yui-u">
-		<h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
-		<ul>
-			<%= render :partial => "talks/talk", :collection => @talks %>
-			<% if @talks.empty? %>
-				<li>nenhuma. ainda :)</li>
+		</div>
+	<% end %>
+	<% cache "home_talks" do %>
+		<div class="yui-u">
+			<h2><img src="/images/text.png" class="icon"> Sessões propostas</h2>
+			<ul>
+				<%= render :partial => "talks/talk", :collection => @talks %>
+				<% if @talks.empty? %>
+					<li>nenhuma. ainda :)</li>
+				<% end %>
+			</ul>
+			<% if @talk_count > 4 %>
+				<a href="/talks">Ver a lista completa</a>
 			<% end %>
-		</ul>
-		<% if @talk_count > 4 %>
-			<a href="/talks">Ver a lista completa</a>
-		<% end %>
-	</div>
+		</div>
+	<% end %>

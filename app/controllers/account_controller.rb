@@ -1,5 +1,7 @@
 class AccountController < ApplicationController
   before_filter :login_required, :except => [:login, :logout]
+  
+  cache_sweeper :user_sweeper, :only => [:details,:profile]
 
   def profile
     @user = self.current_user if logged_in?
