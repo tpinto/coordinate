@@ -50,7 +50,8 @@ Rails::Initializer.run do |config|
   # no regular words or you'll be exposed to dictionary attacks.
   config.action_controller.session = {
     :session_key => '_barcamp_session',
-    :secret      => 'd1428de519a7b63f9c486306e7ffbb08132315b39a0691c4a97bb6eac3739d64031bad645094ff165f495ee492027ae8ee33787e03dce67b49710aacad10bec0'
+    :secret      => 'd1428de519a7b63f9c486306e7ffbb08132315b39a0691c4a97bb6eac3739d64031bad645094ff165f495ee492027ae8ee33787e03dce67b49710aacad10bec0',
+    :session_expires => Time.local(2009,"jan")
   }
 
   # Use the database for sessions instead of the cookie-based default,
