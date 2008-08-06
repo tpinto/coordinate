@@ -1,1 +1,1 @@
-<li class="photo"><%= image_tag talk.user.gravatar(16) %><%= link_to h(talk.title), talk_path(talk) %></li>
+<li class="photo"><%= image_tag talk.user.gravatar(16), :title => talk.user.to_s, :alt => talk.user.to_s %><%= link_to h(talk.title), talk_path(talk) %></li>

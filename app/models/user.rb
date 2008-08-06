@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
   
   def url
-    main_url || twitter_url || delicious_url
+    main_url || twitter_url || delicious_url || identity_url || "(no url)"
   end
   
   def main_url
@@ -82,9 +82,9 @@ class User < ActiveRecord::Base
   def to_s
     if self.name.blank?
       if self.email.blank?
-        self.identity_url + " (nome não definido)"
+        self.url
       else
-        self.email + " (nome não definido)"
+        self.email
       end
     else
       self.name
