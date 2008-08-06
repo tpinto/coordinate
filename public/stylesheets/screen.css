@@ -164,6 +164,19 @@ li.vcard {
   margin-right: 5px;
 }
 
+li.photo {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
+
+.photo * {
+  vertical-align: middle;
+}
+
+.photo img {
+  margin-right: 5px;
+}
+
 /** comments **/
 .comment {
   border-left: 5px solid #333;

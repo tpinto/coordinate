@@ -1,1 +1,1 @@
-<li><%= link_to h(talk.title) + " (#{talk.comments_count||0})", talk_path(talk) %></li>
+<li class="photo"><%= image_tag talk.user.gravatar(16) %><%= link_to h(talk.title), talk_path(talk) %></li>
