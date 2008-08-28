@@ -1,5 +1,5 @@
 html {
-	background: #111 url("/images/back.png") repeat-x top center;
+  background: #0e0504 url("/images/pattern.jpg") repeat-x top center;
 }
 
 body {
@@ -7,11 +7,10 @@ body {
 }
 
 #doc2 {
-	width: 850px;
+	width: 900px;
 	margin: 0px auto;
-	padding: 10px 30px;
-	background: transparent;
 	color: #ddd;
+  background: #0e0504 url("/images/banner.jpg") no-repeat top center;
 }
 
 p {
@@ -19,8 +18,10 @@ p {
 }
 
 #hd {
-	padding: 2em 0;
 	text-align: center;
+	padding-top: 230px;
+	padding-bottom: 20px;
+	color: #eee;
 }
 
 #hd h2 {
@@ -28,18 +29,19 @@ p {
 }
 
 #bd {
-	margin-top: 50px;
+	margin-top: 0px;
+	padding-left:10px;
 }
 
 #sb {
-	padding-left: 20px;
+	padding-right: 10px;
 }
 
 #ft {
-	border-top:  1px solid #222;
+	border-top:  1px solid #333;
 	padding: 15px;
 	font-size: 10px;
-	color: #666;
+	color: #888;
 	margin-top: 15px;
 	text-align: center;
 }

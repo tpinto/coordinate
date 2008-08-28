@@ -9,6 +9,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.feed "feed.xml", :controller => "events", :action => "feed", :format => "xml"
   
+  map.buzz "buzz/:id", :controller => "events", :action => "buzz"
+  map.stats "stats", :controller => "events", :action => "stats"
+  
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   
   map.resource :session

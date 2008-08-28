@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     end
   
     unless fragment_exist?("home_intro")
-      @posts = Post.find :all, :order => "id DESC"
+      @post = Post.find :first, :order => "id DESC"
     end
   end
   
@@ -29,5 +29,14 @@ class EventsController < ApplicationController
     
     response.headers['Content-Type'] = 'application/rss+xml'
     render :layout => false
+  end
+  
+  def stats
+    @users_count = User.count :all
+    @sessions_count = Talk.count :all
+  end
+  
+  def buzz
+    @tags = params[:tag] || "barcamppt08"
   end
 end

@@ -1,0 +1,26 @@
+<div id="photoslist">
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  // this code was partially borrowed from flickr: http://www.flickr.com/services/api/response.json.html
+  function jsonFlickrApi(rsp){
+  	if (rsp.stat != "ok"){
+
+  		// something broke!
+  		return;
+  	}
+      	
+  	for (var i=0; i<rsp.photos.photo.length; i++){
+
+  		var photo = rsp.photos.photo[i];
+  		
+  		var photopage = "http://www.flickr.com/photos/"+photo.owner+"/"+photo.id;
+  		var photothumb = "http://farm"+photo.farm+".static.flickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_s.jpg";
+
+      new Insertion.Bottom('photoslist','<a href="'+photopage+'"><img src="'+photothumb+'" title="'+photo.title+'" alt="'+photo.title+'" /></a>')
+  	}
+  	new Insertion.Top('photoslist','<h2>Há '+rsp.photos.total+' fotos no flickr com a tag "<%=params[:id]%>"</h2>')
+  }
+   
+</script>
+<script src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=28b0f9e88ecc2096f933bab89a19e02f&tags=<%=@tags%>" type="text/javascript" charset="utf-8"></script>
