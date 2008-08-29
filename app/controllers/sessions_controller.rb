@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "YAY, logged out."
-    redirect_back_or_default('/')
+    redirect_back_or_default('/') and return
   end
 
   protected
@@ -74,16 +74,16 @@ class SessionsController < ApplicationController
   
   def failed_openid_login(message = "Authentication failed.")
     flash[:open_id_errors] = message
-    redirect_back_or_default('/')
+    redirect_back_or_default('/') and return
   end
   
   def failed_regular_login(message = "Authentication failed.")
     flash[:login_errors] = message
-    redirect_back_or_default('/')
+    redirect_back_or_default('/') and return
   end
 
   def successful_login
     flash[:notice] = "YAY! Logged in."
-    redirect_to '/'
+    redirect_to '/' and return
   end
 end

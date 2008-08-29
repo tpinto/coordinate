@@ -19,8 +19,8 @@
 
       new Insertion.Bottom('photoslist','<a href="'+photopage+'"><img src="'+photothumb+'" title="'+photo.title+'" alt="'+photo.title+'" /></a>')
   	}
-  	new Insertion.Top('photoslist','<h2>Há '+rsp.photos.total+' fotos no flickr com a tag "<%=params[:id]%>"</h2>')
+  	new Insertion.Top('photoslist','<h2>Há '+rsp.photos.total+' fotos no flickr com a tag "<%=@tags%>"</h2>')
   }
    
 </script>
-<script src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=28b0f9e88ecc2096f933bab89a19e02f&tags=<%=@tags%>" type="text/javascript" charset="utf-8"></script>
+<script src="http://api.flickr.com/services/rest/?format=json&method=flickr.photos.search&api_key=8c0d4315395eece934a0af42df21f274&tags=<%=@tags%>" type="text/javascript" charset="utf-8"></script>

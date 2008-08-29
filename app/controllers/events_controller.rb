@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     end
 
     unless fragment_exist?("home_talks")
-      @talks = Talk.find :all, :order => "id DESC", :limit => 10
+      @talks = Talk.find :all, :order => "id DESC", :limit => 10, :include => [:user]
       @talk_count = Talk.count
     end
   
