@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  caches_page :feed
+  #caches_page :feed
+  session :off, :only => [:feed]
   
   def index
     unless fragment_exist?("home_users")
@@ -19,14 +20,16 @@ class EventsController < ApplicationController
   
   def feed
     it = []
-    it << Post.find(:all, :limit => 20)
-    it << Talk.find(:all, :limit => 20)
-    it << Comment.find(:all, :limit => 20, :include => [:talk])
-      
+    it << Post.find(:all, :limit => 20, :order => "id DESC")
+    it << Talk.find(:all, :limit => 20, :order => "id DESC")
+    it << Comment.find(:all, :limit => 20, :include => [:talk], :order => "id DESC")
+
     it.flatten!
     it.sort!{|a,b| a.created_at <=> b.created_at}
+    it.reverse!
     @items = it.slice(0,20)
-    
+    @items.reverse!
+        
     response.headers['Content-Type'] = 'application/rss+xml'
     render :layout => false
   end
