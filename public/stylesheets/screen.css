@@ -1,5 +1,5 @@
 html {
-  background: #0e0504 url("/images/pattern.jpg") repeat-x top center;
+  background: #1e160e url("/images/pattern.png") repeat-x top center;
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 	width: 900px;
 	margin: 0px auto;
 	color: #ddd;
-  background: #0e0504 url("/images/banner.jpg") no-repeat top center;
+  background: #1e160e url("/images/banner.png") no-repeat top center;
 }
 
 p {
