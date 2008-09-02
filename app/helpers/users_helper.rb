@@ -17,7 +17,7 @@ module UsersHelper
   end
   
 	def bio(user)
-	  "<strong>Bio:</strong> #{h user.bio}" if !user.bio.blank?
+	  "<strong>Bio:</strong> #{textilize user.bio}" if !user.bio.blank?
   end
   
 end
