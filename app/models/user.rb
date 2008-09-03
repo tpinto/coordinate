@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates_presence_of     :name, :if => :email_and_name_required?
   validates_presence_of     :email, :if => :email_and_name_required?
-  validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
+  #validates_uniqueness_of   :email, :case_sensitive => false, :allow_blank => true
   validates_format_of       :email, :with => /^([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})$/, :allow_blank => true
   
   validates_presence_of     :password,                   :if => :password_required?
