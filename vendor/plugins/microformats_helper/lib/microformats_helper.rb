@@ -24,7 +24,9 @@ module MicroformatsHelper
 
   def name(fn, opts)
     if opts[:local_url]
-      "<a href=\"#{opts[:local_url]}\" class=\"fn\">#{fn}</a> (<a href=\"#{opts[:url]||opts[:local_url]}\" class=\"url\">url</a>)"
+      a = "<a href=\"#{opts[:local_url]}\" class=\"fn\">#{fn}</a>"
+      a << " (<a href=\"#{opts[:url]||opts[:local_url]}\" class=\"url\">url</a>)" if opts[:url]
+      a
     elsif opts[:url]
       "<a href=\"#{opts[:url]}\" class=\"fn url\">#{fn}</a>"
     else

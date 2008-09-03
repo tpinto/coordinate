@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
   
   def url
-    main_url || twitter_url || delicious_url || identity_url || "(no url)"
+    main_url || twitter_url || delicious_url || identity_url || nil
   end
   
   def main_url
