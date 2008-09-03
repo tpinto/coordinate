@@ -9,6 +9,7 @@ module ApplicationHelper
     if logged_in?
       link_to("Adicionar sessão", new_talk_url) +
       #{}" | " + 
+      link_to("Inscrição Jantar/Almoço", :controller => "account", :action => "meals") +
       link_to("Profile", :controller => "account", :action => "profile") + 
       #{}" | " +
       link_to("Details", :controller => "account", :action => "details") + 

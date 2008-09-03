@@ -59,6 +59,13 @@ class AccountController < ApplicationController
       flash.now[:email_errors] = "Não existe esse email registado."
     end
   end
+  
+  def meals
+    return unless request.post?
+    current_user.almoco = params[:almosso]
+    current_user.jantar = params[:jantar]
+    current_user.save!
+  end
 
   def login
     redirect_to login_path
