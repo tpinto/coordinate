@@ -25,7 +25,7 @@ xml.rss "version" => "2.0" do
           xml.description item.body_html
           xml.guid "#{item.class.to_s.downcase}-#{item.id}-#{item.created_at.strftime("%d%m%Y%H%M%S")}"
         end
-		    xml.pubDate(item.updated_at)
+		    xml.pubDate(item.updated_at.rfc2822)
       end
     end
 
