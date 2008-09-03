@@ -4,7 +4,7 @@
 <p>Este jantar irá ser servido no próprio local do evento e será constituído por pizzas (da Pizza Hut) de vários tipos de massa (alta ou baixa) e com ingredientes variados para todos os participantes. Por favor, diz-nos se podemos contar com a tua presenca nesta refeição:</p>
 
 <%= form_tag %>
-  <label><input type="radio" name="jantar" value="n" id="jantar_nao" onclick="if(this.checked){$('jantar_obs').hide();}" <%= (!current_user.jantar or current_user.jantar == "n") ? 'checked="checked"' : ''%>> Não irei estar presente nesta refeição</label><br/>
+  <label><input type="radio" name="jantar" value="n" id="jantar_nao" onclick="if(this.checked){$('jantar_obs').hide();}" <%= (current_user.jantar == "n") ? 'checked="checked"' : ''%>> Não irei estar presente nesta refeição</label><br/>
   
   <label><input type="radio" name="jantar" value="y" id="jantar_sim" onclick="if(this.checked){$('jantar_obs').show();}" <%= current_user.jantar == "y" ? 'checked="checked"' : ''%>> Contem comigo para o jantar!</label><br/>
   <br/>
@@ -15,7 +15,7 @@
 <h2>Almoço de Domingo</h2>
 <p>Este almoço já está reservado no restaurante que, infelizmente, tem um número limite de pessoas que pode acolher no seu espaço. Por favor, digam-nos se devemos contar convosco para esta refeição a fim de podermos saber com alguma exactidão para quantas pessoas devemos pedir o almoço.</p>
 
-  <label><input type="radio" name="almosso" value="n" id="almosso_nao" onclick="if(this.checked){$('almosso_obs').hide();}" <%= (!current_user.almoco or current_user.almoco == "n") ? 'checked="checked"' : ''%>> Não irei comparecer nesta refeição</label><br/>
+  <label><input type="radio" name="almosso" value="n" id="almosso_nao" onclick="if(this.checked){$('almosso_obs').hide();}" <%= (current_user.almoco == "n") ? 'checked="checked"' : ''%>> Não irei comparecer nesta refeição</label><br/>
   
   <label><input type="radio" name="almosso" value="y" id="almosso_sim" onclick="if(this.checked){$('almosso_obs').show();}" <%= current_user.almoco == "y" ? 'checked="checked"' : ''%>> Contem comigo para o almoço!</label><br/>
   <br/>
