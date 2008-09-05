@@ -32,6 +32,13 @@ class User < ActiveRecord::Base
     self.update_attribute(:activation_code, self.class.activation_code(self.email))
   end
   
+  def reset_password!
+    pass = Digest::SHA1.hexdigest("-#{Time.now}-")[0,5]
+    self.password = self.password_confirmation = pass
+    self.save!
+    return pass
+  end
+  
   def email_and_name_required?
     !used_open_id?
   end
@@ -131,7 +138,7 @@ class User < ActiveRecord::Base
   def self.activation_code(email)
     Digest::SHA1.hexdigest("-#{Time.now.to_s}-#{email}-")[0,7]
   end
-
+  
   protected
     # before filter 
     def encrypt_password

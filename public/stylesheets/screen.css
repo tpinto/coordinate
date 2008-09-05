@@ -133,6 +133,14 @@ img.icon {
 	width: 95%;
 }
 
+.error a, .error a:visited {
+  color: #333;
+}
+
+.error a:hover {
+  color: #000;
+}
+
 .success {
 	background: #CEFFCB;
 	border: 1px solid #008040;

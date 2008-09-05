@@ -1,5 +1,5 @@
 class AccountController < ApplicationController
-  before_filter :login_required, :except => [:login, :logout]
+  before_filter :login_required, :except => [:login, :logout, :resetpassword]
   
   cache_sweeper :user_sweeper, :only => [:details,:profile]
 
@@ -21,7 +21,7 @@ class AccountController < ApplicationController
 
   def details
     @user = self.current_user if logged_in?
-    @user ||= User.find_by_activation_code(params[:id])
+    #@user ||= User.find_by_activation_code(params[:id])
 
     return unless request.post?
 
@@ -53,8 +53,11 @@ class AccountController < ApplicationController
     user = User.find_by_email(params[:user][:email])
     
     if !user.nil?
-      user.reset_activation_code!
-      UserNotifier.deliver_reset_password(user)
+      p = user.reset_password!
+      UserNotifier.deliver_reset_password(user,p)
+      
+      flash[:login_message] = "Foi enviado um email com nova pass. :)"
+      redirect_to login_path and return
     else
       flash.now[:email_errors] = "Não existe esse email registado."
     end

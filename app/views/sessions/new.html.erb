@@ -4,6 +4,7 @@
 	<a href="/login/openid"><img src="/images/openid.gif" class="icon"></a> <a href="/login/openid">Usar OpenID</a><br><br>
 	
 	<%= flash_message :login_errors, :error %>
+	<%= flash_message :login_message, :success, :div, false %>
 
 	<% form_tag(session_url) do %>
 	<fieldset class="mb">

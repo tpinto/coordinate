@@ -6,10 +6,10 @@ class UserNotifier < ActionMailer::Base
     @body[:url] =   "http://barcamp.webreakstuff.com/account/details/#{user.activation_code}"
   end
   
-  def reset_password(user)
+  def reset_password(user,password)
     setup_email(user)
-    @subject    <<  'Nova password'
-    @body[:url] =   "http://barcamp.webreakstuff.com/account/details/#{user.activation_code}"    
+    @subject          <<  'Nova password'
+    @body[:password]  =   password
   end
   
   def send_error(e,file,path,params)
