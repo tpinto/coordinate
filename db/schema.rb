@@ -9,11 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080903150249) do
+ActiveRecord::Schema.define(:version => 20080912180606) do
 
   create_table "admins", :force => true do |t|
     t.string   "username"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.string   "content_type"
+    t.string   "filename"
+    t.integer  "size",         :limit => 11
+    t.integer  "talk_id",      :limit => 11
     t.datetime "created_at"
     t.datetime "updated_at"
   end

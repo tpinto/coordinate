@@ -1,7 +1,18 @@
-<div class="leftbar narrow">
+<div class="leftbar narrow clearfix">
 	<h1 class="talk"><%= h @talk.title %></h1>
 	<h2 class="smaller"><%= image_tag @talk.user.gravatar(16), :alt => "" %> <%= @talk.user.name %></h2>
 	<%= white_list @talk.body_html %>
+	
+  <h2>Assets:</h2>
+	<%= render :partial => "talks/asset", :collection => @talk.assets %>
+
+  <% if logged_in? and @talk.user == current_user %>
+      <h4>Upload asset</h4>
+      <% form_for(:asset, :url => { :action => "upload_asset", :id => @talk.id }, :html => { :multipart => true }) do |form| %>
+        <%= form.file_field :uploaded_data %>
+        <%= form.submit "OK &raquo;"%>
+      <% end%>
+  <% end %>
 </div>
 
 <div id="comments" class="mb clearfix">

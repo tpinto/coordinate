@@ -34,6 +34,10 @@ class EventsController < ApplicationController
     render :layout => false
   end
   
+  def survey
+    
+  end
+  
   def stats
     @users_count = User.count :all
     @sessions_count = Talk.count :all

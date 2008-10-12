@@ -23,6 +23,15 @@ class TalksController < ApplicationController
     render :action => "new"
   end
   
+  def upload_asset
+    @asset = Asset.new(params[:asset])
+    @asset.talk_id = params[:id]
+     if @asset.save
+       flash[:notice] = 'Asset was successfully created.'
+       redirect_to :action => :show, :id => params[:id]
+     end
+  end
+  
   def index
     unless fragment_exist?("talks_page")
       @talks = Talk.find :all, :order => "id DESC"

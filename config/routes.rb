@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.buzz "buzz/:id", :controller => "events", :action => "buzz"
   map.stats "stats", :controller => "events", :action => "stats"
+  map.survey "survey", :controller => "events", :action => "survey"
   
   map.open_id_complete 'session', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   
